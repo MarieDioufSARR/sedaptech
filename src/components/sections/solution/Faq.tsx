@@ -25,7 +25,7 @@ export function FaqSection() {
             {siteConfig.faq.tag}
           </div>
 
-          <h2 className="text-4xl font-bold tracking-tight text-white md:text-5xl">
+          <h2 className="text-2xl font-bold tracking-tight text-white md:text-3xl">
             {siteConfig.faq.title}
           </h2>
 

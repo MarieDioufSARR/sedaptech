@@ -12,7 +12,7 @@ export default function Plateforme() {
             {plateforme.tag}
           </span>
 
-          <h2 className="mt-8 text-3xl font-bold tracking-tight text-slate-900 lg:text-4xl">
+          <h2 className="mt-8 text-2xl font-bold tracking-tight text-slate-900 lg:text-3xl">
             {plateforme.title}
           </h2>
 

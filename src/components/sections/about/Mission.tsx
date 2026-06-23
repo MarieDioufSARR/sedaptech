@@ -27,7 +27,7 @@ export default function Mission() {
             Notre engagement
           </span>
 
-          <h2 className="mt-6 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
+          <h2 className="mt-6 text-2xl font-bold tracking-tight text-gray-900 md:text-3xl">
             Une vision claire pour transformer lélevage
           </h2>
 
@@ -38,7 +38,7 @@ export default function Mission() {
         </motion.div>
 
         {/* Cards */}
-        <div className="mt-20 grid gap-8 lg:grid-cols-2">
+        <div className="mt-20 grid gap-8 md:grid-col-2 md:gap-3 lg:grid-cols-2">
           {/* Mission */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -51,7 +51,7 @@ export default function Mission() {
               <Target className="h-8 w-8 text-red-500" />
             </div>
 
-            <h3 className="text-3xl font-bold text-gray-900">
+            <h3 className="text-2xl lg;text-3xl font-bold text-gray-900">
               {siteConfig.mission.titre}
             </h3>
 
@@ -74,7 +74,7 @@ export default function Mission() {
               <Eye className="h-8 w-8 text-emerald-600" />
             </div>
 
-            <h3 className="text-3xl font-bold text-gray-900">
+            <h3 className="text-2xl lg:text-3xl font-bold text-gray-900">
               {siteConfig.vision.titre}
             </h3>
 

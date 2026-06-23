@@ -9,21 +9,21 @@ export default function Solution() {
           {siteConfig.solution.badge}
         </h2>
 
-        <p className="lg:text-4xl font-bold text-gray-900 mt-5 text-3xl text-center">
+        <p className="lg:text-3xl font-bold text-gray-900 mt-5 text-2xl text-center">
           {siteConfig.solution.titre}
         </p>
         <p className="text-center text-md lg:text-gray-600 mt-5">
           {siteConfig.solution.description}
         </p>
       </div>
-      <div className="flex justify-between flex-col lg:flex-row items-center px-12 mt-10 lg:mt-14 gap-10 ">
+      <div className="flex justify-between flex-col lg:flex-row items-center px-10 mt-10 lg:mt-14 gap-10 ">
         <div className=" lg:px-12">
           <Image
-            src="/images/Sedap.jpg"
+            src="/Images/Sedap.jpg"
             width={500}
             height={700}
             alt="Solution"
-            className="rounded-2xl border border-gray-200 shadaow-sm"
+            className="rounded-2xl border border-gray-200 shadow-sm"
           />
         </div>
         <div className="grid gap-4 sm:grid-cols-2 max-w-xl mt-5 lg:mt-0 lg:mr-16 ">

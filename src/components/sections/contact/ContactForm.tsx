@@ -6,7 +6,7 @@ export function ContactForm() {
       <div className="mx-auto max-w-4xl px-6">
         <div className="rounded-4xl border border-gray-100 bg-white p-8 shadow-sm lg:p-12">
           <div className="mb-10 text-center">
-            <h2 className="text-3xl font-bold text-gray-900">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
               Envoyez-nous un message
             </h2>
 

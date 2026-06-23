@@ -43,7 +43,7 @@ export default function Probleme() {
           className="mx-auto max-w-3xl text-center"
         >
           {/* Highlight "défi majeur" inside the title */}
-          <h2 className="mt-4 lg:text-4xl font-black tracking-tight text-white/90 text-4xl">
+          <h2 className="mt-4 lg:text-3xl font-black tracking-tight text-white/90 text-2xl">
             {(() => {
               const needle = "défi majeur";
               const lower = title.toLowerCase();
@@ -87,7 +87,7 @@ export default function Probleme() {
                 variants={fadeUp}
                 whileHover={{ y: -8 }}
                 transition={{ duration: 0.3 }}
-                className="group relative overflow-hidden rounded-3xl border border-white/30 bg-white/8 backdrop-blur-xl"
+                className="group relative overflow-hidden rounded-3xl border border-white/8 bg-white/3 backdrop-blur-xl"
               >
                 {/* TOP BORDER EFFECT */}
 

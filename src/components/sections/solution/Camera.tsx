@@ -14,7 +14,7 @@ export default function Camera() {
             {camera.tag}
           </span>
 
-          <h2 className="mt-6 text-3xl font-bold tracking-tight text-slate-900 lg:text-4xl">
+          <h2 className="mt-6 text-2xl font-bold tracking-tight text-slate-900 lg:text-3xl">
             {camera.title}
           </h2>
 

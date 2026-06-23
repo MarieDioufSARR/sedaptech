@@ -7,7 +7,7 @@ export default function Cible() {
   const { tag, titre, items } = siteConfig.cible;
 
   return (
-    <section className="border-t border-gray-100 py-20 lg:py-18">
+    <section className="border-t border-gray-100 py-15 lg:py-18">
       <div className="mx-auto max-w-7xl px-6">
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
@@ -15,7 +15,7 @@ export default function Cible() {
             {tag}
           </span>
 
-          <h2 className="mt-8 text-3xl font-bold tracking-tight text-gray-900 md:text-4xl text-center md:px-5">
+          <h2 className="mt-8 text-2xl font-bold tracking-tight text-gray-900 md:text-3xl text-center md:px-5">
             {titre}
           </h2>
         </div>

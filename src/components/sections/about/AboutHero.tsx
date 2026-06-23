@@ -36,7 +36,7 @@ export default function AboutHero() {
           <motion.h1
             variants={slideRight}
             transition={{ duration: 0.7 }}
-            className="text-2xl font-bold lg:text-4xl text-black/90 tracking-tight lg:text-start text-start"
+            className="text-2xl font-bold lg:text-3xl text-black/90 tracking-tight lg:text-start text-start"
           >
             {siteConfig.apropos.titre}
           </motion.h1>
@@ -81,7 +81,7 @@ export default function AboutHero() {
             className="rounded-4xl overflow-hidden"
           >
             <Image
-              src="/images/apropo1.jpg"
+              src="/Images/apropo1.jpg"
               alt="About Hero"
               width={500}
               height={250}

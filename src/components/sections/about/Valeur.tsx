@@ -53,7 +53,7 @@ export default function Valeur() {
 
           <motion.h2
             variants={fadeUp}
-            className="mt-6 text-4xl font-bold tracking-tight text-gray-900"
+            className="mt-6 text-2xl md:3xl lg:3xl font-bold tracking-tight text-gray-900"
           >
             Ce qui nous guide au quotidien
           </motion.h2>

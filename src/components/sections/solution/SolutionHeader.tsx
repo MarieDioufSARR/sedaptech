@@ -4,6 +4,7 @@ import Image from "next/image";
 import { GoChevronRight } from "react-icons/go";
 
 import { fadeUp, slideRight } from "@/lib/animation";
+import Link from "next/link";
 
 export default function SolutionHeader() {
   return (
@@ -33,9 +34,9 @@ export default function SolutionHeader() {
         variants={slideRight}
         className="relative z-10 flex items-center gap-2 px-6 py-6 text-sm text-white/80"
       >
-        <a href="" className="text-white/70 transition hover:text-white">
+        <Link href="/" className="text-white/70 transition hover:text-white">
           Accueil
-        </a>
+        </Link>
         <GoChevronRight className="h-4 w-4 text-white/60" />
         <a
           href="/solutionPage"
