@@ -12,7 +12,7 @@ export default function ContactCta() {
           </h2>
           <div className="mt-9">
             <a
-              href="https://wa.me/221776679166"
+              href="https://wa.me/221772485006"
               className=" rounded-2xl bg-white px-8 py-4 font-semibold text-gray-900 transition hover:bg-gray-100 "
             >
               Prendre rendez-vous

@@ -42,9 +42,7 @@ export default function DemoCamera() {
 
           <p className="mt-6 text-lg leading-relaxed text-gray-600">
             Explorez nos solutions innovantes à travers des démonstrations
-            concrètes réalisées sur le terrain. Découvrez comment SedapTech
-            accompagne les acteurs du secteur agricole grâce à des technologies
-            intelligentes de surveillance, de suivi et d’analyse.
+            concrètes réalisées sur le terrain.
           </p>
         </div>
       </section>

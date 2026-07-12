@@ -85,12 +85,12 @@ export default function Footer() {
               Navigation Rapide
             </h4>
 
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col lg:ml-10 gap-4">
               {siteConfig.footer.liens.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="group flex items-center gap-2 text-neutral-300 transition-all duration-300 hover:translate-x-1 hover:text-red-400"
+                  className="group flex items-center gap-2  text-neutral-300 transition-all duration-300 hover:translate-x-1 hover:text-red-400 text-lg font-semibold"
                 >
                   {link.label}
                 </Link>
@@ -100,10 +100,10 @@ export default function Footer() {
 
           {/* SOCIALS */}
           <motion.div variants={staggerItem}>
-            <h4 className=" font-semibold text-white lg:text-center">
+            <h4 className=" font-semibold text-lg text-white lg:text-center">
               Nous suivre
             </h4>
-            <div className="mt-8 flex items-center gap-4">
+            <div className="mt-8 flex lg:items-center lg:justify-center gap-4">
               {siteConfig.footer.socialLinks?.map((social) => {
                 const Icon = getIcon(
                   social.icon.toLowerCase() as keyof typeof iconMap
@@ -124,7 +124,9 @@ export default function Footer() {
           {/* CONTACT */}
 
           <motion.div variants={staggerItem}>
-            <h4 className="mb-6 text-lg font-semibold text-white">Contact</h4>
+            <h4 className="mb-6 text-lg font-semibold text-white lg:ml-16">
+              Contact
+            </h4>
 
             <div className="space-y-5">
               <div className="flex items-center gap-4">

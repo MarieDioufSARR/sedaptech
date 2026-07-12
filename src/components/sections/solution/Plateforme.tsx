@@ -22,7 +22,7 @@ export default function Plateforme() {
         </div>
 
         {/* PRODUCT CARD */}
-        <div className="mx-auto mt-20 max-w-5xl overflow-hidden rounded-4xl border border-slate-200 bg-white shadow-lg">
+        <div className="mx-auto mt-18 max-w-5xl overflow-hidden rounded-4xl border border-slate-200 bg-white shadow-lg">
           <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14 p-8 lg:p-12">
             {/* IMAGE */}
             <div className="flex justify-center">
@@ -79,7 +79,7 @@ export default function Plateforme() {
 
               {/* CTA SECTION */}
               <div className="mt-8 border-t border-slate-100 pt-8">
-                <button className="cursor-pointer rounded-xl bg-emerald-600 px-8 py-4 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-700 hover:shadow-xl">
+                <button className="cursor-pointer animate-pulse rounded-xl bg-emerald-600 px-8 py-4 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-700 hover:shadow-xl">
                   Voir une démonstration
                 </button>
               </div>

@@ -83,7 +83,7 @@ export default function Camera() {
               <div className="mt-8 border-t border-slate-100 pt-8">
                 <a
                   href="/demonstration"
-                  className="inline-flex items-center rounded-xl bg-emerald-600 px-6 py-3 font-semibold text-white transition hover:bg-red-600"
+                  className="inline-flex animate-pulse items-center rounded-xl bg-emerald-600 px-6 py-3 font-semibold text-white transition hover:bg-red-600"
                 >
                   Voir la démonstration
                 </a>

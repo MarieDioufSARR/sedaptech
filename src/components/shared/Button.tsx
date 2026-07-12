@@ -9,7 +9,7 @@ interface Props {
 
 export default function Button({
   children,
-  href = "https://wa.me/221776679166",
+  href = "https://wa.me/221772485006",
   variant = "primary",
 }: Props) {
   const styles = {

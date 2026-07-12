@@ -254,20 +254,6 @@ export interface FaqItem {
   question: string;
   answer: string;
 }
-// =========================
-// CONTACT
-// =========================
-
-export interface ContactSection {
-  tag: string;
-  titre: string;
-  sousTitre: string;
-  wolof: string;
-  avantages: string[];
-  formTitre: string;
-  formSous: string;
-  situations: string[];
-}
 
 // =========================
 // FOOTER
@@ -330,7 +316,6 @@ export interface SiteConfig {
   solution: SolutionSection;
   cible: CibleSection;
   marche: MarcheSection;
-  contact: ContactSection;
   mission: Mission;
   vision: Vision;
   CtaSection: CtaSection;

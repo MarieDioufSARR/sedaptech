@@ -44,7 +44,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" className={`${cormorant.variable} ${dmSans.variable}`}>
-      <body className="font-sans bg-ivoire text-gray-900 antialiased">
+      <body className="font-sans bg-[var(--background)] text-[var(--foreground)] antialiased">
         <Navbar />
         <main className="pt-20">{children}</main>
         <Footer />

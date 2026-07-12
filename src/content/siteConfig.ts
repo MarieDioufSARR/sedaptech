@@ -7,7 +7,7 @@ export const siteConfig: SiteConfig = {
 
   email: "sedapsn221@gmail.com",
 
-  telephone: "+221 77 000 00 00",
+  telephone: "+221 77 248 50 06",
 
   localisation: "Cité Senghor,Thies,Sénégal",
 
@@ -35,7 +35,7 @@ export const siteConfig: SiteConfig = {
       },
       {
         label: "À propos",
-        href: "/apropos",
+        href: "/a_propos",
       },
       {
         label: "Solutions",
@@ -532,77 +532,6 @@ export const siteConfig: SiteConfig = {
   },
 
   // =========================
-  // CONTACT
-  // =========================
-
-  contact: {
-    tag: "Passez à l’action",
-
-    titre: "Construisons ensemble une aviculture plus rentable et durable",
-
-    sousTitre:
-      "Rejoignez les producteurs qui font confiance à SEDAP'Tech pour moderniser et sécuriser leur activité.",
-
-    wolof:
-      "« Ndank ndank mooy japp golo ci ñaay » — Les grandes réussites commencent toujours par une première décision.",
-
-    avantages: [
-      "Diagnostic gratuit de votre projet",
-
-      "Accompagnement personnalisé",
-
-      "Réponse rapide sous 24h",
-    ],
-
-    formTitre: "Parlez-nous de votre projet",
-
-    formSous:
-      "Complétez ce formulaire et un conseiller SEDAP'Tech vous recontactera rapidement.",
-
-    situations: [
-      "Je souhaite lancer un élevage avicole",
-
-      "Je possède déjà une exploitation",
-
-      "Je veux gérer mon élevage à distance",
-
-      "Je recherche des débouchés commerciaux",
-
-      "Autre situation",
-    ],
-  },
-
-  // =========================
-  // VALEURS
-  // =========================
-
-  // valeurs: [
-  //   {
-  //     check: "BadgeCheck",
-
-  //     titre: "Pilotage intelligent",
-
-  //     desc: "Surveillez votre exploitation en temps réel grâce à des outils simples et connectés.",
-  //   },
-
-  //   {
-  //     check: "TrendingUp",
-
-  //     titre: "Performance rentable",
-
-  //     desc: "Réduisez les pertes et améliorez durablement vos performances économiques.",
-  //   },
-
-  //   {
-  //     check: "ShieldCheck",
-
-  //     titre: "Croissance durable",
-
-  //     desc: "Développez une activité moderne, stable et adaptée aux enjeux du futur.",
-  //   },
-  // ],
-
-  // =========================
   // Mission
   // =========================
   mission: {
@@ -635,12 +564,12 @@ export const siteConfig: SiteConfig = {
 
       {
         label: "À propos",
-        href: "/aboutPage",
+        href: "/a_propos",
       },
 
       {
         label: "Solutions",
-        href: "/solutionPage",
+        href: "/solution",
       },
 
       {
@@ -652,19 +581,19 @@ export const siteConfig: SiteConfig = {
     socialLinks: [
       {
         label: "Facebook",
-        href: "https://facebook.com",
+        href: "https://www.facebook.com/share/1K1cCmvqNY/?mibextid=wwXIfr",
         icon: "Facebook",
       },
 
       {
         label: "Linkedin",
-        href: "https://linkedin.com",
+        href: "https://www.linkedin.com/company/sedap-s%C3%A9n%C3%A9galaise-de-d%C3%A9veloppement-agricole-et-de-prestations/",
         icon: "Linkedin",
       },
 
       {
         label: "Instagram",
-        href: "https://instagram.com",
+        href: "https://www.instagram.com/la_sedap?igsh=Mm05dzg3ZWR0emJo",
         icon: "Instagram",
       },
 

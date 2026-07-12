@@ -13,7 +13,7 @@ export default function ContactInfo() {
         <div className="rounded-3xl border border-gray-100 p-4">
           <Phone className="h-8 w-8 text-green-600" />
           <h3 className="mt-4 text-xl font-semibold">Téléphone</h3>
-          <p className="mt-2 text-gray-600">+221 XX XXX XX XX</p>
+          <p className="mt-2 text-gray-600">+221 77 248 50 06</p>
         </div>
 
         <div className="rounded-3xl border border-gray-100 p-4">
