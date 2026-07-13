@@ -90,7 +90,7 @@ export default function Footer() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="group flex items-center gap-2  text-neutral-300 transition-all duration-300 hover:translate-x-1 hover:text-red-400 text-lg font-semibold"
+                  className="group flex items-center gap-2  text-neutral-300 transition-all duration-300 hover:translate-x-1 hover:text-red-400 text-md "
                 >
                   {link.label}
                 </Link>
@@ -166,8 +166,6 @@ export default function Footer() {
           className="mt-16 flex flex-col items-center justify-between gap-5 border-t border-white/10 pt-8 text-sm text-neutral-500 md:flex-row"
         >
           <p>{siteConfig.footer.copyright}</p>
-
-          <p>{siteConfig.footer.mention}</p>
         </motion.div>
       </Container>
     </footer>

@@ -71,7 +71,7 @@ export default function Navbar() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="relative overflow-hidden text-lg font-medium text-neutral-900 transition duration-300 border-b-2 border-transparent hover:border-red-700 hover:text-black-500 "
+                  className="relative overflow-hidden text-md font-medium text-neutral-900 transition duration-300 border-b-2 border-transparent hover:border-red-700 hover:text-black-500 "
                 >
                   {link.label}
                 </Link>

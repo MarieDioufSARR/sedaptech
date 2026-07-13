@@ -605,7 +605,5 @@ export const siteConfig: SiteConfig = {
     ],
 
     copyright: "© 2026 SEDAP'Tech — Tous droits réservés",
-
-    mention: "Conçu au Sénégal pour l’agriculture africaine",
   },
 };

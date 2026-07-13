@@ -270,7 +270,6 @@ export interface FooterSection {
   liens: FooterLink[];
   socialLinks?: SocialLink[];
   copyright: string;
-  mention: string;
 }
 
 // =========================
