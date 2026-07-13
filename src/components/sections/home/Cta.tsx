@@ -12,9 +12,12 @@ export default function Cta() {
           {titre}
         </h2>
         <div className="mt-8 flex justify-center">
-          <button className="rounded-md bg-red-600 px-6 py-3 text-lg font-semibold text-white hover:bg-emerald-700 cursor-pointer transition duration-300">
+          <a
+            href="https://wa.me/221772485006"
+            className="rounded-md bg-red-600 px-6 py-3 text-lg font-semibold text-white hover:bg-emerald-700 cursor-pointer transition duration-300"
+          >
             {ctaPrimaire}
-          </button>
+          </a>
         </div>
       </div>
     </section>

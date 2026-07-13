@@ -58,34 +58,44 @@ export const slideDown = {
 export const slideRight = {
   initial: {
     opacity: 0,
-    x: -20,
+    x: -40,
   },
 
-  animate: {
+  whileInView: {
     opacity: 1,
     x: 0,
   },
 
   transition: {
-    duration: 0.5,
+    duration: 0.6,
     ease: "easeOut" as const,
+  },
+
+  viewport: {
+    once: true,
+    amount: 0.2,
   },
 };
 
 export const slideLeft = {
   initial: {
     opacity: 0,
-    x: 20,
+    x: 40,
   },
 
-  animate: {
+  whileInView: {
     opacity: 1,
     x: 0,
   },
 
   transition: {
-    duration: 0.5,
+    duration: 0.6,
     ease: "easeOut" as const,
+  },
+
+  viewport: {
+    once: true,
+    amount: 0.2,
   },
 };
 

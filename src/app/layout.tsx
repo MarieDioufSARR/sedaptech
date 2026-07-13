@@ -35,6 +35,9 @@ export const metadata: Metadata = {
     locale: "fr_SN",
     type: "website",
   },
+  other: {
+    "color-scheme": "light",
+  },
 };
 
 export default function RootLayout({
@@ -44,7 +47,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" className={`${cormorant.variable} ${dmSans.variable}`}>
-      <body className="font-sans bg-[var(--background)] text-[var(--foreground)] antialiased">
+      <body className="font-sans bg-\[var\(--background\)\] text-\[var\(--foreground\)\]antialiased">
         <Navbar />
         <main className="pt-20">{children}</main>
         <Footer />

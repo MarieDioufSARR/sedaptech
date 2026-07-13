@@ -73,7 +73,7 @@ export default function HeroSection() {
             {/* CTA */}
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <Button href="https://wa.me/221776679166">{ctaPrimaire}</Button>
+              <Button href="https://wa.me/221772485006">{ctaPrimaire}</Button>
 
               <a
                 href="/solution"

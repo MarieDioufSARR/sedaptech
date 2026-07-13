@@ -1,7 +1,9 @@
 "use client";
 
 import { siteConfig } from "@/content/siteConfig";
+import { fadeUp, staggerContainer, staggerItem } from "@/lib/animation";
 import { icons } from "@/lib/icons";
+import { motion } from "framer-motion";
 
 export default function Cible() {
   const { tag, titre, items } = siteConfig.cible;
@@ -11,23 +13,38 @@ export default function Cible() {
       <div className="mx-auto max-w-7xl px-6">
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center rounded-full border border-red-500/20 bg-red-500/10 px-4 py-2 text-sm font-medium text-red-500">
+          <motion.span
+            {...fadeUp}
+            className="inline-flex items-center rounded-full border border-red-500/20 bg-red-500/10 px-4 py-2 text-sm font-medium text-red-500"
+          >
             {tag}
-          </span>
+          </motion.span>
 
-          <h2 className="mt-8 text-2xl font-bold tracking-tight text-gray-900 md:text-3xl text-center md:px-5">
+          <motion.h2
+            {...fadeUp}
+            transition={{ ...fadeUp.transition, delay: 0.1 }}
+            className="mt-8 text-2xl font-bold tracking-tight text-gray-900 md:text-3xl text-center md:px-5"
+          >
             {titre}
-          </h2>
+          </motion.h2>
         </div>
 
         {/* Cibles */}
-        <div className="mt-16 grid grid-cols-1 gap-10 md:flex md:items-center md:justify-center md:gap-12">
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={staggerContainer}
+          className="mt-16 grid grid-cols-1 gap-10 md:flex md:items-center md:justify-center md:gap-12"
+        >
           {items.map((item, index) => {
             const Icon = icons[item.icone as keyof typeof icons];
 
             return (
-              <div
+              <motion.div
                 key={index}
+                variants={staggerItem}
+                transition={{ duration: 0.5 }}
                 className="relative flex flex-col items-center text-center md:flex-row md:text-left"
               >
                 <div className="group flex flex-col items-center gap-4 md:flex-row">
@@ -51,10 +68,10 @@ export default function Cible() {
                 {index < items.length - 1 && (
                   <div className="mt-8 h-px w-20 bg-linear-to-r from-transparent via-gray-300 to-transparent md:hidden" />
                 )}
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
