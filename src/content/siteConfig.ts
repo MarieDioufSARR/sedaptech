@@ -1,7 +1,7 @@
 import { SiteConfig } from "@/types";
 
 export const siteConfig: SiteConfig = {
-  nom: "SEDAP'Tech",
+  nom: "SEDAP’Tech",
 
   slogan: "L’intelligence au service de l’aviculture africaine",
 
@@ -9,55 +9,37 @@ export const siteConfig: SiteConfig = {
 
   telephone: "+221 77 248 50 06",
 
-  localisation: "Cité Senghor,Thies,Sénégal",
+  whatsapp: "https://wa.me/221772485006",
+
+  localisation: "Cité Senghor, Thiès, Sénégal",
 
   // =========================
   // HERO
   // =========================
 
   hero: {
-    titre: "L’avenir de",
+    titre: "Pilotez votre élevage, où que vous soyez.",
 
-    titreAccent: "l’aviculture commence aujourd’hui.",
+    titreAccent: "Gardez le contrôle, à chaque étape.",
 
     sousTitre:
-      "Automatisez la gestion de vos élevages, surveillez vos données en temps réel et améliorez durablement vos performances grâce à SEDAP'tech, une solution pensée pour les éleveurs modernes.",
+      "Surveillez votre élevage à distance, suivez ses performances et bénéficiez d’un accompagnement technique pour prendre de meilleures décisions au quotidien.",
 
-    ctaPrimaire: "Commencer maintenant",
+    ctaPrimaire: "Parlons de votre élevage",
 
     ctaSecondaire: "Découvrir nos solutions",
-
-    //Navigation
-    navigation: [
-      {
-        label: "Accueil",
-        href: "/",
-      },
-      {
-        label: "À propos",
-        href: "/a_propos",
-      },
-      {
-        label: "Solutions",
-        href: "/solution",
-      },
-      {
-        label: "Contact",
-        href: "#contact",
-      },
-    ],
   },
 
   // =========================
-  // Statistiques
+  // STATISTIQUES : la preuve
   // =========================
   statistiques: {
-    tag: "Nos chiffres",
+    tag: "SEDAP’Tech en chiffres",
     chiffres: [
       {
         valeur: 500,
         suffix: "+",
-        label: "Producteurs accompagnés",
+        label: "Éleveurs accompagnés",
       },
 
       {
@@ -68,17 +50,18 @@ export const siteConfig: SiteConfig = {
 
       {
         valeur: 95,
-        suffix: "%",
+        suffix: "\u00A0%",
         label: "Taux de satisfaction",
       },
 
       {
         valeur: 24,
         suffix: "/7",
-        label: "Assistance & suivi",
+        label: "Assistance et suivi",
       },
     ],
   },
+
   // =========================
   // À PROPOS
   // =========================
@@ -88,91 +71,101 @@ export const siteConfig: SiteConfig = {
 
     titre: "Une nouvelle vision de l’aviculture africaine",
 
+    highlight: "nouvelle vision",
+
+    dirigeante: {
+      nom: "Mengue Diouf",
+      role: "Directrice Générale",
+    },
+
     sousTitre:
-      "Avant de concevoir quoi que ce soit, nous sommes allés là où tout se joue au cœur des élevages sénégalais, aux côtés des producteurs, face à leurs réalités quotidiennes.",
+      "Avant de concevoir quoi que ce soit, nous sommes allés au cœur des élevages sénégalais, aux côtés des éleveurs, face à leurs réalités quotidiennes.",
     sousTitre2:
-      "Nous avons observé, écouté et mesuré l'étendue des pertes silencieuses qui fragilisent, année après année, des exploitations entières portées par des femmes et des hommes de conviction.",
+      "Nous avons observé, écouté et mesuré les pertes silencieuses qui fragilisent, année après année, des exploitations portées par des femmes et des hommes de conviction.",
     sousTitre3:
-      "De cette immersion est née SEDAP'Tech, une solution pensée dans ses moindres détails pour donner à chaque éleveur les moyens de piloter son activité avec précision, de prendre les bonnes décisions et de bâtir, cycle après cycle, une exploitation plus performante et plus durable.",
+      "De cette immersion est née SEDAP’Tech\u00A0: une solution qui donne à chaque éleveur les moyens de piloter son activité avec précision, de décider au bon moment et de bâtir une exploitation plus performante et plus durable.",
 
     mission:
-      "Notre mission est d’aider les producteurs à développer des exploitations plus performantes, rentables et durables grâce à la technologie, l’accompagnement humain et l’accès au marché.",
+      "Notre mission est d’aider les éleveurs à développer des exploitations plus performantes, rentables et durables grâce à la technologie, l’accompagnement humain et l’accès au marché.",
   },
+
   // =========================
-  // PROBLEMATIQUES
+  // PROBLÉMATIQUE : le constat
   // =========================
 
   ProblematiqueSection: {
-    title: "L’aviculture reste un défi majeur ",
+    tag: "Le constat",
+
+    title: "Les pertes d’un élevage se repèrent souvent, trop tard",
+    highlight: "trop tard",
 
     subtitle:
-      "De nombreux producteurs font encore face à des difficultés qui limitent leur rentabilité et compromettent leurs performances. Entre le manque de suivi, les pertes invisibles et l’absence de marché structuré, gérer un élevage devient un véritable défi au quotidien.",
+      "Sans suivi régulier ni données fiables, il devient difficile de détecter les problèmes à temps, de suivre les performances et de prendre les bonnes décisions.",
 
     problems: [
       {
-        icon: "EyeOff",
-
         title: "Manque de visibilité",
-
         description:
-          "Impossible de surveiller l’élevage en temps réel et d’anticiper les problèmes avant qu’ils ne deviennent critiques.",
+          "Sans surveillance régulière, certains problèmes peuvent passer inaperçus et entraîner des pertes évitables.",
+        icon: "EyeOff",
       },
-
       {
-        icon: "BarChart3",
-
-        title: "Gestion des données inefficace",
-
+        title: "Données dispersées",
         description:
-          "L’absence d’outils centralisés complique le suivi des données techniques, financières et opérationnelles de l’élevage.",
+          "Lorsque les données sur l’alimentation, le poids, les dépenses et les ventes sont dispersées, il devient difficile de suivre les performances et d’évaluer la rentabilité d’un cycle.",
+        icon: "ChartNoAxesCombined",
       },
-
       {
-        icon: "Smartphone",
-
-        title: "Gestion difficile à distance",
-
+        title: "Un accompagnement technique limité",
         description:
-          "Les producteurs qui investissent à distance manquent souvent d’outils fiables pour suivre efficacement leurs opérations et encadrer leur personnel.",
+          "Sans conseils adaptés au bon moment, il peut être difficile de corriger certaines pratiques et d’améliorer les résultats d’un cycle à l’autre.",
+        icon: "HandHelping",
       },
-
       {
+        title: "Difficulté à commercialiser",
+        description:
+          "Trouver des acheteurs adaptés à sa production et négocier des conditions de vente satisfaisantes peut rester difficile.",
         icon: "Store",
-
-        title: "Difficulté à vendre",
-
-        description:
-          "L’accès à des acheteurs fiables et à un marché structuré reste un frein majeur pour écouler la production de manière rentable.",
       },
     ],
   },
   // =========================
-  // SOLUTIONS
+  // SOLUTION
   // =========================
 
   solution: {
-    badge: "Sedap’Tech en action",
+    badge: "SEDAP’TECH EN ACTION",
 
-    titre: "Une solution complète pour transformer votre élevage",
+    titre: "Des outils concrets pour mieux gérer votre élevage",
+
+    highlight: "mieux gérer votre élevage",
 
     description:
-      "SEDAP'Tech combine technologie, accompagnement et intelligence terrain afin de sécuriser et accélérer la croissance de votre activité.",
+      "De la surveillance de votre poulailler au suivi de vos performances, SEDAP’Tech vous aide à mieux piloter votre activité grâce à des outils connectés, un accompagnement technique et un accès facilité au marché.",
+
     services: [
       {
-        titre: "Surveillance en temps reel",
-        sous: "Gardez le contrôle de votre élevage à tout moment grace à des cameras connectées et intelligentes.",
+        titre: "Surveillance à distance",
+
+        sous: "Consultez les images de votre élevage depuis votre téléphone, de jour comme de nuit, et restez informé de ce qui se passe dans votre poulailler.",
       },
+
       {
-        titre: "Gestion Centralisée",
-        sous: "Suivez vos données techniques et financières dans une interface simple et accessible depuis votre smartphone.",
+        titre: "Suivi des performances",
+
+        sous: "Centralisez les données essentielles de votre cycle : alimentation, poids, mortalité, dépenses et ventes pour mieux suivre vos résultats.",
       },
+
       {
-        titre: "Accompagnement terrain",
-        sous: "Bénéficiez d’un suivi humain structuré pour améliorer vos performances et résoudre vos problèmes spécifiques.",
+        titre: "Accompagnement technique",
+
+        sous: "Bénéficiez de conseils adaptés aux observations et aux performances de votre élevage pour ajuster vos pratiques au fil des cycles.",
       },
+
       {
         titre: "Accès au marché",
-        sous: "Connectez votre production à des acheteurs qualifiés pour améliorer vos ventes et votre stabilité.",
+
+        sous: "Facilitez la recherche de débouchés grâce à la mise en relation avec des acheteurs potentiels pour votre production.",
       },
     ],
   },
@@ -181,24 +174,35 @@ export const siteConfig: SiteConfig = {
   // Solution Page
   // =========================
   solutionPage: {
+    header: {
+      titre: "Une solution complète pour mieux piloter votre élevage",
+      highlight: "piloter votre élevage",
+      description:
+        "Des outils connectés, un suivi des performances et un accompagnement de proximité pour vous aider à mieux gérer votre activité avicole.",
+    },
+
     camera: {
       tag: "Caméra connectée",
-      title: "Surveillez votre élevage où que vous soyez",
+      verbe: "Voir",
+
+      title: "Gardez un œil sur votre élevage, où que vous soyez",
+      highlight: "où que vous soyez",
+
       description:
-        "Gardez un œil sur votre exploitation en temps réel depuis votre téléphone et recevez des alertes instantanées en cas d'anomalie.",
+        "Accédez aux images de votre élevage en direct depuis votre téléphone, de jour comme de nuit. Recevez des alertes lorsqu’une anomalie est détectée.",
 
       features: [
         {
           icon: "Md360",
-          title: "Vision 360°",
+          title: "Vision panoramique à 360°",
         },
         {
           icon: "GiSolarPower",
-          title: "Alimentation solaire",
+          title: "Alimentation à énergie solaire",
         },
         {
           icon: "FaWifi",
-          title: "Connexion 4G / 5G",
+          title: "Connexion 4G/5G sans Wi-Fi",
         },
         {
           icon: "FaBell",
@@ -210,26 +214,29 @@ export const siteConfig: SiteConfig = {
         },
         {
           icon: "FaMicrophone",
-          title: "Audio bidirectionnel",
+          title: "Communication audio à distance",
         },
       ],
     },
+
     plateforme: {
-      tag: "plateforme Intelligente",
-      title: "Toutes vos données d'élevage au même endroit",
+      tag: "Plateforme intelligente",
+      verbe: "Comprendre",
+      title: "Toutes vos données d’élevage au même endroit",
+      highlight: "au même endroit",
       description:
-        "Centralisez toutes les données de votre exploitation dans une application unique. Suivez vos performances, recevez des alertes en temps réel et prenez les bonnes décisions grâce à des indicateurs clairs et accessibles partout.",
+        "Alimentation, poids, mortalité, dépenses et ventes réunis dans une seule application, avec des indicateurs clairs pour décider au bon moment.",
       features: [
         {
           title: "Tableau de bord en temps réel",
           icon: "layoutDashboard",
         },
         {
-          title: "Suivi de l'alimentation",
+          title: "Suivi de l’alimentation",
           icon: "utensils",
         },
         {
-          title: "Analyse du poids et de la croissance",
+          title: "Suivi du poids et de la croissance",
           icon: "scale",
         },
         {
@@ -254,50 +261,42 @@ export const siteConfig: SiteConfig = {
         },
       ],
     },
+
     market: {
-      tag: "Marché intégré",
-      title: "Commercialisez votre production en toute sérénité",
+      tag: "Accès au marché",
+      verbe: "Commercialiser",
+      title: "Faciliter la commercialisation de votre production",
+      highlight: "la commercialisation",
       description:
-        "Notre marché numérique connecte les éleveurs à un réseau d’acheteurs fiables et vérifiés.Leur permettant bénéficier de débouchés garantis, de prix justes et d’une meilleure stabilité de revenus.",
+        "SEDAP’Tech accompagne les producteurs dans la recherche de débouchés et la mise en relation avec des acheteurs, selon les besoins et les volumes disponibles.",
 
       features: [
         {
-          title: "Acheteurs vérifiés",
-
+          title: "Mise en relation avec des acheteurs",
           icon: "users",
         },
         {
-          title: "Transactions sécurisées",
-
-          icon: "shield",
-        },
-        {
-          title: "Rachat direct de production",
-
+          title: "Possibilité de rachat selon les volumes",
           icon: "handshake",
         },
         {
-          title: "Prix justes et transparents",
-
+          title: "Échanges sur les conditions de vente",
           icon: "scale",
         },
         {
-          title: "Revenus sécurisés",
-
-          icon: "wallet",
-        },
-        {
-          title: "Accès à de nouveaux marchés",
-
+          title: "Suivi des opportunités commerciales",
           icon: "chartColumn",
         },
       ],
     },
+
     suiviTechnique: {
       tag: "Suivi technique",
-      title: "Un accompagnement technique Personnalisé",
+      verbe: "Décider",
+      title: "Un accompagnement technique personnalisé",
+      highlight: "personnalisé",
       description:
-        "Les éleveurs bénéficient en complement d’un suivi technique continu leur permettant d’anticiper les risques, d’améliorer leurs performances et de prendre les bonnes décisions au bon moment.",
+        "Des experts analysent les données de votre élevage et vous conseillent au bon moment, pour anticiper les risques et améliorer vos performances.",
 
       features: [
         {
@@ -326,152 +325,65 @@ export const siteConfig: SiteConfig = {
   },
 
   // =========================
-  // Call to action
-  // =========================
-  CtaSection: {
-    tag: "Prêt à moderniser votre élevage ?",
-    titre: "Rejoignez la révolution de l’aviculture moderne",
-    ctaPrimaire: "Commencer maintenant",
-  },
-  // =========================
-  // PILIERS
-  // =========================
-
-  piliers: [
-    {
-      num: "01",
-
-      icone: "MonitorSmartphone",
-
-      titre: "Surveillance connectée",
-
-      sous: "Gardez le contrôle de votre élevage en temps réel depuis votre smartphone.",
-
-      points: [
-        "Suivi intelligent des paramètres essentiels",
-
-        "Alertes automatiques en cas d’anomalie",
-
-        "Accès aux données à distance 24h/24",
-      ],
-    },
-
-    {
-      num: "02",
-
-      icone: "HandHelping",
-
-      titre: "Accompagnement terrain",
-
-      sous: "Bénéficiez d’un suivi humain structuré pour améliorer vos performances.",
-
-      points: [
-        "Conseils personnalisés",
-
-        "Protocoles d’élevage optimisés",
-
-        "Assistance technique continue",
-      ],
-    },
-
-    {
-      num: "03",
-
-      icone: "ChartNoAxesCombined",
-
-      titre: "Développement rentable",
-
-      sous: "Optimisez votre production et développez une exploitation durable.",
-
-      points: [
-        "Réduction des pertes",
-
-        "Amélioration des rendements",
-
-        "Accès à des débouchés fiables",
-      ],
-    },
-  ],
-
-  // =========================
-  // CIBLE
+  // CIBLE : « est-ce pour moi ? »
   // =========================
 
   cible: {
-    tag: "Pour qui ?",
+    tag: "À qui s’adresse SEDAP’Tech",
 
     titre: "La technologie au service de chaque ambition avicole",
+
+    highlight: "chaque ambition avicole",
 
     items: [
       {
         icone: "Leaf",
         titre: "Nouveaux producteurs",
+        description:
+          "Lancez-vous avec un suivi pas à pas et évitez les erreurs coûteuses des premiers cycles.",
       },
 
       {
         icone: "MonitorSmartphone",
         titre: "Investisseurs à distance",
+        description:
+          "Suivez votre élevage et votre équipe en direct, où que vous soyez.",
       },
 
       {
         icone: "Users",
-        titre: "Élevages ambitieux",
+        titre: "Éleveurs en croissance",
+        description:
+          "Mesurez, comparez et optimisez vos performances pour passer à l’échelle supérieure.",
       },
     ],
+  },
+
+  // =========================
+  // CTA : l'action
+  // =========================
+  CtaSection: {
+    tag: "Passez à l’action",
+    titre: "Parlons de votre élevage",
+    description:
+      "Présentez-nous votre projet et échangeons sur les solutions adaptées à vos besoins.",
+    ctaPrimaire: "Échanger avec notre équipe",
   },
 
   // =========================
   // CtaAbout
   // =========================
   ctaAbout: {
-    titre: "Ensemble, construisons l’avenir de l’aviculture africaine.",
+    titre: "Ensemble, construisons l’avenir de l’aviculture africaine",
 
-    ctaPrimaire: "Découvrir nos solutions",
+    // Primaire = WhatsApp (conversion). Secondaire = page Solutions.
+    ctaPrimaire: "Échanger avec notre équipe",
 
-    ctaSecondaire: "Prendre un rv",
+    ctaSecondaire: "Découvrir nos solutions",
   },
 
   // =========================
-  // MARCHÉ
-  // =========================
-
-  marche: {
-    tag: "Commercialisation",
-
-    titre: "Accédez à des débouchés plus fiables",
-
-    sousTitre:
-      "Nous connectons votre production à des acheteurs qualifiés afin d’améliorer vos ventes et votre stabilité.",
-
-    debouches: [
-      {
-        icone: "Utensils",
-
-        titre: "Restaurants & Hôtels",
-
-        desc: "Des partenaires à la recherche de produits frais, réguliers et de qualité.",
-      },
-
-      {
-        icone: "Store",
-
-        titre: "Marchés & Revendeurs",
-
-        desc: "Un réseau fiable pour écouler rapidement vos volumes de production.",
-      },
-
-      {
-        icone: "Building2",
-
-        titre: "Professionnels & Grossistes",
-
-        desc: "Des partenaires capables d’acheter de grands volumes de manière continue.",
-      },
-    ],
-  },
-
-  // =========================
-  // faq
+  // FAQ
   // =========================
 
   faq: {
@@ -479,54 +391,52 @@ export const siteConfig: SiteConfig = {
     title: "Questions fréquentes",
     description:
       "Retrouvez les réponses aux questions les plus courantes concernant notre caméra intelligente, notre plateforme de gestion et notre marché intégré.",
+    aide: {
+      texte: "Vous ne trouvez pas votre réponse ?",
+      cta: "Écrivez-nous sur WhatsApp",
+    },
 
     items: [
       {
         question: "La caméra fonctionne-t-elle sans connexion Wi-Fi ?",
         answer:
-          "Oui. Notre caméra est équipée d’une carte SIM 4G/5G et ne nécessite pas de connexion Wi-Fi pour fonctionner.",
+          "Oui. La caméra utilise une carte SIM avec une connexion mobile 4G/5G. Elle n'a donc pas besoin d'un réseau Wi-Fi pour transmettre les images.",
       },
-
       {
-        question: "La caméra fonctionne-t-elle la nuit ?",
+        question: "Peut-on surveiller son élevage pendant la nuit ?",
         answer:
-          "Oui. Grâce à sa vision 360° jour et nuit, vous gardez un œil sur votre élevage à tout moment.",
+          "Oui. La caméra dispose d'un système de vision nocturne qui permet de visualiser le poulailler même lorsque l'éclairage est faible ou absent.",
       },
-
       {
-        question: "La caméra nécessite-t-elle une alimentation électrique ?",
+        question: "Comment la caméra est-elle alimentée en énergie ?",
         answer:
-          "Non. Elle est alimentée par énergie solaire, ce qui la rend idéale pour les zones rurales ou les sites éloignés.",
+          "La caméra est équipée d'un panneau solaire qui assure son alimentation en énergie. Cette solution permet de limiter le recours à une alimentation électrique classique.",
       },
-
       {
-        question: "Que puis-je suivre sur la plateforme ?",
+        question: "Quelles informations puis-je suivre sur la plateforme ?",
         answer:
-          "La plateforme permet de suivre la consommation d’aliments, le poids des animaux, la mortalité, les dépenses, les ventes et les performances globales de l’élevage.",
+          "La plateforme permet de consulter plusieurs indicateurs de votre exploitation, notamment la consommation alimentaire, le poids, la mortalité, ainsi que les dépenses et les ventes.",
       },
-
       {
-        question: "Recevrai-je des alertes en cas de problème ?",
+        question: "La plateforme permet-elle de recevoir des alertes ?",
         answer:
-          "Oui. Des notifications sont envoyées automatiquement lorsqu’une anomalie ou un retard est détecté.",
+          "Oui. Des alertes peuvent signaler certaines anomalies ou certains retards afin de vous aider à suivre plus attentivement le déroulement de votre élevage.",
       },
-
       {
-        question: "Comment fonctionne le suivi technique ?",
+        question: "En quoi consiste le suivi technique proposé par SEDAP ?",
         answer:
-          "Nos experts analysent les données de votre élevage et vous accompagnent avec des recommandations et des visites de suivi pour améliorer vos performances.",
+          "Le suivi technique comprend des visites de l'exploitation, l'analyse des données de production et des conseils adaptés aux besoins de l'éleveur, notamment sur les pratiques d'élevage et les alternatives biologiques.",
       },
-
       {
-        question: "Comment vendre ma production sur votre marché ?",
+        question:
+          "Comment SEDAP’Tech m'aide-t-elle à commercialiser ma production ?",
         answer:
-          "Notre marché met les éleveurs en relation avec des acheteurs fiables et sécurise les transactions afin de faciliter la commercialisation.",
+          "SEDAP’Tech facilite la mise en relation entre les producteurs et les acheteurs, en tenant compte des besoins du marché et des volumes de production disponibles.",
       },
-
       {
-        question: "Pouvez-vous racheter directement ma production ?",
+        question: "SEDAP peut-elle racheter directement ma production ?",
         answer:
-          "Oui. Selon les volumes et les conditions, nous pouvons proposer le rachat direct de votre production afin de garantir un débouché sécurisé.",
+          "Un rachat direct peut être envisagé selon les volumes disponibles et les conditions convenues. Il dépend des possibilités de commercialisation au moment de la demande.",
       },
     ],
   },
@@ -537,7 +447,7 @@ export const siteConfig: SiteConfig = {
   mission: {
     titre: "Notre mission",
     description:
-      "Accompagner les producteurs dans la modernisation de leurs exploitations grâce à la technologie et à un accompagnement de proximité.",
+      "Accompagner les éleveurs dans la modernisation de leurs exploitations grâce à la technologie et à un accompagnement de proximité.",
   },
   // =========================
   // Vision
@@ -545,21 +455,204 @@ export const siteConfig: SiteConfig = {
   vision: {
     titre: "Notre vision",
     description:
-      "Une aviculture africaine plus performante, rentable et durable, portée par des producteurs autonomes et connectés.",
+      "Une aviculture africaine plus performante, rentable et durable, portée par des éleveurs autonomes et connectés.",
   },
+
+  // =========================
+  // Engagement (en-tête de la section Mission / Vision)
+  // =========================
+  engagement: {
+    tag: "Notre engagement",
+    titre: "Une vision claire pour transformer l’élevage",
+    highlight: "transformer l’élevage",
+    description:
+      "Nous accompagnons les éleveurs avec des solutions innovantes pour améliorer leur productivité et leur rentabilité.",
+  },
+
+  // =========================
+  // Valeurs
+  // =========================
+  valeurs: {
+    tag: "Nos valeurs",
+    titre: "Ce qui nous guide au quotidien",
+    description: "Les principes qui orientent chacune de nos actions.",
+    items: [
+      {
+        icon: "Sparkles",
+        titre: "Innovation",
+        description:
+          "Des outils connectés pour voir, mesurer et décider à distance.",
+      },
+      {
+        icon: "Handshake",
+        titre: "Proximité",
+        description:
+          "Un accompagnement humain, sur le terrain, aux côtés des éleveurs.",
+      },
+      {
+        icon: "Leaf",
+        titre: "Durabilité",
+        description:
+          "Des exploitations plus performantes et plus durables, cycle après cycle.",
+      },
+    ],
+  },
+
+  // =========================
+  // DÉMONSTRATIONS (vidéos)
+  // =========================
+
+  demonstration: {
+    header: {
+      tag: "Démonstrations vidéo",
+      titre: "Découvrez SEDAP’Tech en action",
+      highlight: "en action",
+      description:
+        "Explorez nos solutions à travers des démonstrations réalisées sur le terrain et découvrez concrètement leur fonctionnement dans un élevage avicole.",
+    },
+
+    groupes: [
+      {
+        id: "demo-camera",
+        verbe: "Voir",
+        tag: "Caméra connectée",
+        titre: "Surveillez votre élevage à distance",
+        highlight: "à distance",
+        description:
+          "Découvrez le fonctionnement de notre caméra connectée, de la visualisation en direct à son installation dans un poulailler.",
+
+        videos: [
+          {
+            titre: "Présentation de la caméra connectée",
+            description:
+              "Découvrez les principales caractéristiques de la caméra et son fonctionnement dans un élevage avicole.",
+            url: "/Videos/cameraconnecté.mp4",
+          },
+          {
+            titre: "La surveillance du poulailler en direct",
+            description:
+              "Observez les images transmises par la caméra et découvrez comment suivre votre élevage à distance.",
+            url: "/Videos/cameravideo.mp4",
+          },
+          {
+            titre: "Installation chez un éleveur à Mbour",
+            description:
+              "Découvrez les différentes étapes de l'installation de la caméra et sa mise en service sur le terrain.",
+            url: "/Videos/installationday.mp4",
+          },
+        ],
+      },
+
+      {
+        id: "demo-plateforme",
+        verbe: "Comprendre",
+        tag: "Plateforme numérique",
+        titre: "Gérez votre exploitation depuis une seule plateforme",
+        highlight: "une seule plateforme",
+        description:
+          "Découvrez comment la plateforme centralise les informations de votre exploitation et facilite le suivi de vos activités et de vos indicateurs de production.",
+
+        videos: [
+          {
+            titre: "Découverte du tableau de bord",
+            description:
+              "Explorez le tableau de bord et les principaux indicateurs disponibles pour suivre votre exploitation.",
+            url: "/Videos/dashboard.mp4",
+          },
+          {
+            titre: "Gestion des élevages",
+            description:
+              "Découvrez comment consulter les informations de vos élevages et suivre leurs activités depuis votre espace de gestion.",
+            url: "/Videos/elevage.mp4",
+          },
+          {
+            titre: "Suivi financier de l'exploitation",
+            description:
+              "Découvrez les outils de consultation des dépenses, des ventes et des données financières de votre exploitation.",
+            url: "/Videos/investissement.mp4",
+          },
+        ],
+      },
+    ],
+  },
+  // =========================
+  // CONTACT
+  // =========================
+  contact: {
+    header: {
+      tag: "Contact",
+      titre: "Parlons de votre élevage",
+      highlight: "votre élevage",
+      description:
+        "Une question, une démonstration ou un projet ? Écrivez-nous, notre équipe vous répond rapidement.",
+    },
+
+    form: {
+      titre: "Parlons de votre projet",
+      description:
+        "Présentez-nous votre demande. Vos informations seront automatiquement organisées dans un message WhatsApp que vous pourrez vérifier avant de l'envoyer.",
+
+      champs: {
+        nom: {
+          label: "Nom complet",
+          placeholder: "Ex. : Awa Diop",
+        },
+        telephone: {
+          label: "Téléphone",
+          placeholder: "Ex. : 77 000 00 00",
+        },
+        sujet: {
+          label: "Objet de votre demande",
+          options: [
+            "Demander une démonstration",
+            "Découvrir la caméra et la plateforme",
+            "Vendre ou acheter sur le marché",
+            "Devenir partenaire",
+            "Autre question",
+          ],
+        },
+        message: {
+          label: "Votre message (facultatif)",
+          placeholder:
+            "Précisez votre demande, parlez-nous de votre élevage ou posez votre question...",
+        },
+      },
+      erreurs: {
+        nom: "Veuillez renseigner votre nom complet.",
+        telephone: "Veuillez saisir un numéro de téléphone valide.",
+      },
+      messageIntro: "Bonjour l'équipe SEDAP’Tech,",
+      envoyer: "Continuer sur WhatsApp",
+      confirmation:
+        "Vos informations seront reprises dans un message prérempli. Vous pourrez le vérifier et l'envoyer directement depuis WhatsApp.",
+    },
+
+    info: {
+      titre: "Nos coordonnées",
+      whatsapp: {
+        titre: "Écrivez-nous sur WhatsApp",
+        texte: "Le moyen le plus simple d’échanger avec notre équipe.",
+        cta: "Ouvrir WhatsApp",
+      },
+      labels: {
+        telephone: "Téléphone",
+        email: "E-mail",
+        localisation: "Adresse",
+      },
+    },
+  },
+
   // =========================
   // FOOTER
   // =========================
 
   footer: {
-    desc: "SEDAP'Tech accompagne la transformation de l’aviculture africaine grâce à la technologie, l’accompagnement et l’innovation terrain.",
-
-    badge: "🇸🇳 Innovation sénégalaise • Vision africaine",
+    desc: "SEDAP’Tech met l’innovation technologique au service de l’aviculture africaine en proposant des solutions de suivi intelligent, un accompagnement technique de proximité et un accès facilité aux marchés.",
 
     liens: [
       {
         label: "Accueil",
-        href: "/ ",
+        href: "/",
       },
 
       {
@@ -599,11 +692,11 @@ export const siteConfig: SiteConfig = {
 
       {
         label: "Tiktok",
-        href: "https://tiktok.com",
+        href: "https://www.tiktok.com/@sedaptech?_r=1&_t=ZS-9AX6OgeADOX",
         icon: "Tiktok",
       },
     ],
 
-    copyright: "© 2026 SEDAP'Tech — Tous droits réservés",
+    copyright: "© 2026 SEDAP’Tech — Tous droits réservés",
   },
 };

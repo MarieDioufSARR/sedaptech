@@ -6,5 +6,11 @@ interface Props {
 }
 
 export default function Container({ children, className = "" }: Props) {
-  return <div className={` w-full px-6 lg:px-12 ${className}`}>{children}</div>;
+  return (
+    <div
+      className={`mx-auto w-full max-w-[1440px] px-5 sm:px-6 lg:px-10 xl:px-12 ${className}`}
+    >
+      {children}
+    </div>
+  );
 }

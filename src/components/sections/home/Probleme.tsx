@@ -1,12 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 
 import Container from "@/components/shared/Container";
-
+import SectionHeader from "@/components/shared/SectionHeader";
 import { siteConfig } from "@/content/siteConfig";
-
 import { fadeUp, staggerContainer } from "@/lib/animation";
 import { icons } from "@/lib/icons";
 
@@ -16,168 +14,130 @@ type Problem = {
   icon: string;
 };
 
-const slideInLeft = {
-  hidden: { opacity: 0, x: -40 },
+const slideIn = {
+  hidden: { opacity: 0, x: -16 },
   show: { opacity: 1, x: 0 },
 };
 
+const fadeOnly = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1 },
+};
+
 function ProblemCard({ problem }: { problem: Problem }) {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const reduceMotion = useReducedMotion();
   const Icon = icons[problem.icon as keyof typeof icons];
 
-  return (
-    <motion.div
-      variants={slideInLeft}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      whileHover={{ y: -8 }}
-      onMouseMove={(e: React.MouseEvent<HTMLDivElement>) => {
-        const rect = e.currentTarget.getBoundingClientRect();
-        setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-      }}
-      className="group relative overflow-hidden rounded-3xl border border-white/8 bg-white/3 backdrop-blur-xl"
-    >
-      {/* TOP BORDER EFFECT */}
-      <div className="absolute inset-x-0 top-0 h-0.5 bg-linear-to-r from-green-400 via-red-400 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+  const handleMouseMove = (e: React.MouseEvent<HTMLLIElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
 
-      {/* SPOTLIGHT SUIVANT LA SOURIS */}
+    e.currentTarget.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+    e.currentTarget.style.setProperty("--my", `${e.clientY - rect.top}px`);
+  };
+
+  return (
+    <motion.li
+      variants={reduceMotion ? fadeOnly : slideIn}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+      whileHover={reduceMotion ? undefined : { y: -3 }}
+      onMouseMove={handleMouseMove}
+      className="group relative h-full overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-[0_1px_3px_rgba(15,23,42,0.03)] transition-[border-color,box-shadow] duration-300 hover:border-brand/30 hover:shadow-[0_16px_32px_-22px_rgba(15,23,42,0.22)] md:rounded-[20px]"
+    >
       <div
-        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 [@media(hover:hover)]:group-hover:opacity-100"
         style={{
-          background: `radial-gradient(300px circle at ${mousePos.x}px ${mousePos.y}px, rgba(74,222,128,0.08), transparent 70%)`,
+          background:
+            "radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%), rgba(216,58,46,0.055), transparent 70%)",
         }}
       />
 
-      {/* CARD CONTENT */}
-      <div className="relative p-8">
-        {/* ICON */}
-        <motion.div
-          whileHover={{ rotate: [0, -8, 8, 0], scale: 1.1 }}
-          transition={{ duration: 0.4 }}
-          className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-green-400 group-hover:border-red-400/30 group-hover:bg-red-500/10 group-hover:text-red-300"
-        >
-          {Icon ? <Icon className="h-7 w-7" /> : null}
-        </motion.div>
+      <div className="relative flex h-full items-start gap-3.5 p-4 sm:gap-4 sm:p-5 md:flex-col md:gap-0 md:p-6 lg:p-7">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand/[0.07] text-brand ring-1 ring-brand/10 transition-transform duration-300 group-hover:scale-105 sm:h-11 sm:w-11 md:mb-5 md:h-12 md:w-12">
+          {Icon ? (
+            <Icon
+              className="h-5 w-5 sm:h-[1.375rem] sm:w-[1.375rem]"
+              aria-hidden="true"
+            />
+          ) : null}
+        </div>
 
-        {/* TITLE */}
-        <h3 className="text-xl font-bold text-white transition-colors duration-300 group-hover:text-red-200">
-          {problem.title}
-        </h3>
+        <div className="min-w-0 flex-1">
+          <h3 className="text-[0.9375rem] font-semibold leading-snug tracking-tight text-ink sm:text-base md:text-lg">
+            {problem.title}
+          </h3>
 
-        {/* DESCRIPTION */}
-        <p className="mt-4 text-base leading-relaxed text-white/75">
-          {problem.description}
-        </p>
+          <p className="mt-2 text-sm leading-relaxed text-slate-600 md:mt-3 md:text-[0.9375rem] md:leading-7">
+            {problem.description}
+          </p>
+        </div>
       </div>
-
-      {/* HOVER GLOW */}
-      <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-        <div className="absolute inset-0 bg-linear-to-br from-red-500/6 via-transparent to-green-500/6" />
-      </div>
-    </motion.div>
+    </motion.li>
   );
 }
 
 export default function Probleme() {
-  const { title, subtitle, problems } = siteConfig.ProblematiqueSection;
-
-  const needle = "défi majeur";
-  const lower = title.toLowerCase();
-  const idx = lower.indexOf(needle);
-
-  const before = idx !== -1 ? title.slice(0, idx) : title;
-  const match = idx !== -1 ? title.slice(idx, idx + needle.length) : "";
-  const after = idx !== -1 ? title.slice(idx + needle.length) : "";
+  const {
+    tag = "Le constat",
+    title,
+    highlight,
+    subtitle,
+    problems,
+  } = siteConfig.ProblematiqueSection;
 
   return (
-    <section className="relative overflow-hidden bg-[#050505] py-28">
-      {/* BACKGROUND EFFECTS */}
-      <motion.div
-        animate={{
-          scale: [1, 1.15, 1],
-          opacity: [0.1, 0.16, 0.1],
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute left-0 top-20 h-72 w-72 rounded-full bg-red-500/10 blur-3xl"
-        aria-hidden="true"
-      />
-
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.1, 0.15, 0.1],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1,
-        }}
-        className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-green-500/10 blur-3xl"
-        aria-hidden="true"
-      />
-
-      {/* GRID */}
-      <div className="absolute inset-0 opacity-[0.03]">
-        <div className="h-full w-full bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-size-[80px_80px]" />
-      </div>
-
-      <Container className="relative z-10">
-        {/* HEADER */}
+    <section
+      aria-labelledby="probleme-title"
+      className="bg-slate-50 py-14 sm:py-16 lg:py-20"
+    >
+      <Container>
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="mx-auto max-w-3xl text-center"
         >
-          <h2 className="mt-4 lg:text-3xl font-black tracking-tight text-white/90 text-2xl">
-            {idx === -1 ? (
-              title
-            ) : (
-              <>
-                {before}
-                <span className="text-green-400 inline-block">
-                  <motion.span
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
-                    className="inline-block"
-                  >
-                    {match}
-                  </motion.span>
-                </span>
-                {after}
-              </>
-            )}
-          </h2>
-          <p className="mt-6 text-base leading-relaxed text-white/68 sm:text-lg text-center">
-            {subtitle}
-          </p>
+          <SectionHeader
+            id="probleme-title"
+            eyebrow={tag}
+            description={subtitle}
+            title={title}
+            highlight={highlight}
+          />
         </motion.div>
 
-        {/* CARDS */}
-        <motion.div
+        <motion.ul
           variants={staggerContainer}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true }}
-          className="mt-20 grid gap-6 lg:gap-10 md:grid-cols-2 lg:grid-cols-4 cursor-pointer"
+          viewport={{ once: true, margin: "-40px" }}
+          className="mt-8 grid grid-cols-1 items-stretch gap-3 sm:mt-10 sm:gap-4 md:mt-12 md:grid-cols-2 md:gap-5 xl:grid-cols-4 xl:gap-5 cursor-pointer"
         >
           {problems.map((problem, index) => (
             <ProblemCard key={`${problem.title}-${index}`} problem={problem} />
           ))}
-        </motion.div>
+        </motion.ul>
 
-        <motion.p
+        <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="text-center text-green-600 mt-12 lg:mt-18 lg:text-lg mx-auto"
+          className="mx-auto mt-10 max-w-3xl border-t border-slate-200 pt-7 text-center sm:mt-12 sm:pt-9 lg:mt-14"
         >
-          Et si vous pouviez reprendre le controle totale ?
-        </motion.p>
+          <p className="text-base font-semibold leading-relaxed tracking-tight text-ink sm:text-lg md:text-xl">
+            Votre élevage mérite un suivi plus{" "}
+            <span className="text-brand">rigoureux et adapté</span> à vos
+            besoins.
+          </p>
+
+          <div
+            className="mt-3 text-lg text-slate-400 sm:mt-4"
+            aria-hidden="true"
+          >
+            ↓
+          </div>
+        </motion.div>
       </Container>
     </section>
   );

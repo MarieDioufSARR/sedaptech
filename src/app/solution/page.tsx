@@ -11,8 +11,8 @@ export default function Solution() {
       <SolutionHeader />
       <Camera />
       <Plateforme />
-      <Marché />
       <SuiviTechnique />
+      <Marché />
       <FaqSection />
     </>
   );

@@ -1,43 +1,59 @@
 "use client";
 
-import { siteConfig } from "@/content/siteConfig";
 import CountUp from "react-countup";
+
+import { siteConfig } from "@/content/siteConfig";
 
 export default function Statistiques() {
   const { tag, chiffres } = siteConfig.statistiques;
 
   return (
-    <section className="border-t border-gray-100 py-20 lg:py-24">
-      <div className="mx-auto max-w-7xl px-6">
-        {/* Header */}
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="mt-6 text-2xl font-bold tracking-tight text-gray-900 md:text-4xl">
-            {tag}
-          </h2>
-        </div>
+    <section aria-label={tag} className="bg-white py-12 sm:py-14 lg:py-16">
+      <div className="mx-auto w-full max-w-6xl px-5 sm:px-6 lg:px-10">
+        <h2 className="text-center text-xs font-semibold uppercase tracking-[0.14em] text-slate-500 sm:text-sm sm:tracking-[0.16em]">
+          {tag}
+        </h2>
 
-        {/* Statistiques */}
-        <div className="mt-16 grid grid-cols-2 gap-y-10 lg:grid-cols-4">
+        {/* Grille des statistiques */}
+        <div className="mt-8 grid grid-cols-2 sm:mt-10 lg:grid-cols-4">
           {chiffres.map((chiffre, index) => (
             <div
-              key={index}
-              className={`text-center ${
-                index !== chiffres.length - 1
-                  ? "lg:border-r lg:border-gray-200"
-                  : ""
-              }`}
+              key={chiffre.label}
+              className={[
+                "relative flex min-w-0 flex-col items-center px-2 py-5 text-center sm:px-4 sm:py-6 lg:py-2",
+                index % 2 === 0 ? "border-r border-slate-100" : "",
+                index >= 2 ? "border-t border-slate-100 sm:border-t-0" : "",
+                index !== 0 && index !== 2
+                  ? "lg:border-l lg:border-slate-200"
+                  : "",
+                index === 2 ? "lg:border-l lg:border-slate-200" : "",
+                index === 1 || index === 3 ? "lg:border-r-0" : "",
+              ].join(" ")}
             >
-              <div className="text-4xl font-bold tracking-tight text-green-600 lg:text-5xl">
-                <CountUp
-                  end={Number(chiffre.valeur)}
-                  duration={2.5}
-                  suffix={chiffre.suffix ?? ""}
-                  enableScrollSpy
-                  scrollSpyOnce
-                />
-              </div>
+              <span
+                className="mb-3 h-0.5 w-7 shrink-0 rounded-full bg-leaf sm:mb-4 sm:w-8"
+                aria-hidden="true"
+              />
 
-              <p className="mt-3 text-sm font-medium text-gray-600 lg:text-base">
+              <p className="whitespace-nowrap text-3xl font-bold leading-none tracking-tight text-ink tabular-nums sm:text-4xl lg:text-5xl">
+                <span className="sr-only">
+                  {chiffre.valeur}
+                  {chiffre.suffix ?? ""}
+                </span>
+
+                <span aria-hidden="true">
+                  <CountUp
+                    end={Number(chiffre.valeur)}
+                    duration={2.2}
+                    suffix={chiffre.suffix ?? ""}
+                    enableScrollSpy
+                    scrollSpyOnce
+                    preserveValue
+                  />
+                </span>
+              </p>
+
+              <p className="mt-3 max-w-[13rem] text-sm font-medium leading-5 text-slate-600 sm:mt-3 sm:text-base sm:leading-6">
                 {chiffre.label}
               </p>
             </div>

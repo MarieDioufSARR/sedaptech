@@ -2,6 +2,7 @@ import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
+import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -17,7 +18,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "SEDAP'Tech — L'aviculture connectée au Sénégal",
+  title: "SEDAP'Tech: L'aviculture connectée au Sénégal",
   description:
     "Solution complète alliant technologie intelligente et expertise avicole pour aider les producteurs sénégalais à gérer, optimiser et rentabiliser leur activité.",
   keywords: [
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
     "SEDAP",
   ],
   openGraph: {
-    title: "SEDAP'Tech — L'aviculture connectée au Sénégal",
+    title: "SEDAP'Tech: L'aviculture connectée au Sénégal",
     description:
       "Caméras connectées, suivi technique et mise en marché pour les producteurs de volailles.",
     locale: "fr_SN",
@@ -46,8 +47,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" className={`${cormorant.variable} ${dmSans.variable}`}>
+    <html
+      lang="fr"
+      data-scroll-behavior="smooth"
+      className={`${cormorant.variable} ${dmSans.variable}`}
+    >
       <body className="font-sans bg-\[var\(--background\)\] text-\[var\(--foreground\)\]antialiased">
+        <NextTopLoader color="#d83a2e" height={3} showSpinner={false} />
         <Navbar />
         <main className="pt-20">{children}</main>
         <Footer />

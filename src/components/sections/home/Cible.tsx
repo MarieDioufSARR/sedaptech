@@ -1,78 +1,73 @@
 "use client";
 
+import { motion, useReducedMotion } from "framer-motion";
+
+import Container from "@/components/shared/Container";
+import SectionHeader from "@/components/shared/SectionHeader";
 import { siteConfig } from "@/content/siteConfig";
 import { fadeUp, staggerContainer, staggerItem } from "@/lib/animation";
 import { icons } from "@/lib/icons";
-import { motion } from "framer-motion";
 
 export default function Cible() {
-  const { tag, titre, items } = siteConfig.cible;
+  const { tag, titre, highlight, items } = siteConfig.cible;
+  const reduceMotion = useReducedMotion();
 
   return (
-    <section className="border-t border-gray-100 py-15 lg:py-18">
-      <div className="mx-auto max-w-7xl px-6">
-        {/* Header */}
-        <div className="mx-auto max-w-3xl text-center">
-          <motion.span
-            {...fadeUp}
-            className="inline-flex items-center rounded-full border border-red-500/20 bg-red-500/10 px-4 py-2 text-sm font-medium text-red-500"
-          >
-            {tag}
-          </motion.span>
-
-          <motion.h2
-            {...fadeUp}
-            transition={{ ...fadeUp.transition, delay: 0.1 }}
-            className="mt-8 text-2xl font-bold tracking-tight text-gray-900 md:text-3xl text-center md:px-5"
-          >
-            {titre}
-          </motion.h2>
-        </div>
-
-        {/* Cibles */}
+    <section
+      aria-labelledby="cible-title"
+      className="bg-slate-50 py-16 sm:py-20 lg:py-24"
+    >
+      <Container>
         <motion.div
+          variants={fadeUp}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={staggerContainer}
-          className="mt-16 grid grid-cols-1 gap-10 md:flex md:items-center md:justify-center md:gap-12"
+          viewport={{ once: true, amount: 0.3 }}
         >
-          {items.map((item, index) => {
+          <SectionHeader
+            id="cible-title"
+            eyebrow={tag}
+            title={titre}
+            highlight={highlight}
+          />
+        </motion.div>
+
+        <motion.ul
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.15 }}
+          className="mt-10 grid items-stretch gap-4 sm:mt-12 sm:gap-5 md:grid-cols-3 lg:mt-14 lg:gap-6"
+        >
+          {items.map((item) => {
             const Icon = icons[item.icone as keyof typeof icons];
 
             return (
-              <motion.div
-                key={index}
+              <motion.li
+                key={item.titre}
                 variants={staggerItem}
-                transition={{ duration: 0.5 }}
-                className="relative flex flex-col items-center text-center md:flex-row md:text-left"
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                whileHover={reduceMotion ? undefined : { y: -4 }}
+                className="group flex h-full flex-col items-center rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-[0_1px_2px_rgba(15,23,42,0.03)] transition-[border-color,box-shadow] duration-300 hover:border-slate-300 hover:shadow-[0_20px_40px_-24px_rgba(15,23,42,0.25)] sm:p-7 lg:p-8"
               >
-                <div className="group flex flex-col items-center gap-4 md:flex-row">
-                  {/* Icône */}
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-red-500/10 transition-all duration-300 group-hover:scale-110 group-hover:bg-red-500/15">
-                    {Icon && <Icon className="h-8 w-8 text-red-500" />}
-                  </div>
-
-                  {/* Texte */}
-                  <h3 className="max-w-55 text-lg font-semibold text-gray-900 lg:text-xl">
-                    {item.titre}
-                  </h3>
+                <div className="mb-5 flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-slate-100 text-ink transition-transform duration-300 group-hover:scale-105">
+                  {Icon ? (
+                    <Icon className="h-7 w-7" aria-hidden="true" />
+                  ) : null}
                 </div>
 
-                {/* Séparateur Desktop */}
-                {index < items.length - 1 && (
-                  <div className="ml-12 hidden h-12 w-px bg-linear-to-b from-transparent via-gray-300 to-transparent md:block" />
-                )}
+                <h3 className="text-lg font-semibold leading-snug tracking-tight text-ink sm:text-xl">
+                  {item.titre}
+                </h3>
 
-                {/* Séparateur Mobile */}
-                {index < items.length - 1 && (
-                  <div className="mt-8 h-px w-20 bg-linear-to-r from-transparent via-gray-300 to-transparent md:hidden" />
-                )}
-              </motion.div>
+                <p className="mt-3 max-w-[34ch] text-sm leading-relaxed text-slate-600 sm:text-base">
+                  {item.description}
+                </p>
+              </motion.li>
             );
           })}
-        </motion.div>
-      </div>
+        </motion.ul>
+      </Container>
     </section>
   );
 }

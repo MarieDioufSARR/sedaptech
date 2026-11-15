@@ -2,6 +2,7 @@
 // ICONS
 // =========================
 
+// Noms d'icônes utilisables dans la config (clés du registre lib/icons)
 export type IconName =
   | "Leaf"
   | "MonitorSmartphone"
@@ -24,12 +25,15 @@ export type IconName =
   | "Tiktok";
 
 // =========================
-// NAVIGATION
+// HERO
 // =========================
 
-export interface NavLink {
-  label: string;
-  href: string;
+export interface HeroSection {
+  titre: string;
+  titreAccent: string;
+  sousTitre: string;
+  ctaPrimaire: string;
+  ctaSecondaire: string;
 }
 
 // =========================
@@ -47,6 +51,10 @@ export interface StatSection {
   chiffres: StatItem[];
 }
 
+// =========================
+// PROBLÉMATIQUE
+// =========================
+
 export interface ProblematiqueItem {
   icon: IconName;
   title: string;
@@ -54,42 +62,58 @@ export interface ProblematiqueItem {
 }
 
 export interface ProblematiqueSection {
+  /** Surtitre de la section */
+  tag: string;
   title: string;
+  /** Mot ou groupe de mots du titre affiché en couleur */
+  highlight?: string;
   subtitle: string;
   problems: ProblematiqueItem[];
 }
 
 // =========================
-// PILIERS / SERVICES
+// SOLUTION (accueil)
 // =========================
 
-export interface Pilier {
-  num: string;
-  icone: IconName;
+export interface SolutionService {
   titre: string;
   sous: string;
-  points: string[];
 }
-// VALEURS
-// =========================
 
-// export interface Valeur {
-//   check: IconName;
-//   titre: string;
-//   desc: string;
-// }
-
-// =========================
-// HERO
-// =========================
-
-export interface HeroSection {
+export interface SolutionSection {
+  badge: string;
   titre: string;
-  titreAccent: string;
-  sousTitre: string;
+  highlight?: string;
+  description: string;
+  services: SolutionService[];
+}
+
+// =========================
+// CIBLE
+// =========================
+
+export interface CibleItem {
+  icone: IconName;
+  titre: string;
+  description: string;
+}
+
+export interface CibleSection {
+  tag: string;
+  titre: string;
+  highlight?: string;
+  items: CibleItem[];
+}
+
+// =========================
+// CALL TO ACTION (accueil)
+// =========================
+
+export interface CtaSection {
+  tag: string;
+  titre: string;
+  description?: string;
   ctaPrimaire: string;
-  ctaSecondaire: string;
-  navigation: NavLink[];
 }
 
 // =========================
@@ -99,160 +123,180 @@ export interface HeroSection {
 export interface AproposSection {
   tag: string;
   titre: string;
+  highlight?: string;
+  dirigeante: {
+    nom: string;
+    role: string;
+  };
   sousTitre: string;
   sousTitre2: string;
   sousTitre3: string;
   mission: string;
 }
 
-// =========================
-// SOLUTION
-// =========================
-
-export interface SolutionSection {
-  badge: string;
-  titre: string;
-  description: string;
-  services: detailSolution[];
-}
-export interface detailSolution {
-  titre: string;
-  sous: string;
-}
-// =========================
-// Call to action
-// =========================
-export interface CtaSection {
-  tag: string;
-  titre: string;
-  ctaPrimaire: string;
-}
-// =========================
-// CIBLE
-// =========================
-
-export interface CibleItem {
-  icone: IconName;
-  titre: string;
-}
-
-export interface CibleSection {
-  tag: string;
-  titre: string;
-  items: CibleItem[];
-}
-
-// =========================
-// MARCHÉ
-// =========================
-
-export interface Debouche {
-  icone: IconName;
-  titre: string;
-  desc: string;
-}
-
-export interface MarcheSection {
-  tag: string;
-  titre: string;
-  sousTitre: string;
-  debouches: Debouche[];
-}
-// =========================
-// Mission
-// =========================
 export interface Mission {
   titre: string;
   description: string;
 }
 
-// =========================
-// Vision
-// =========================
 export interface Vision {
   titre: string;
   description: string;
 }
 
-// =========================
-// CtaAbout
-// =========================
+/** En-tête de la section Mission / Vision */
+export interface EngagementSection {
+  tag: string;
+  titre: string;
+  highlight?: string;
+  description: string;
+}
+
+export interface ValeurItem {
+  /** Doit correspondre aux icônes déclarées dans le composant Valeur */
+  icon: "Sparkles" | "Handshake" | "Leaf";
+  titre: string;
+  description: string;
+}
+
+export interface ValeursSection {
+  tag: string;
+  titre: string;
+  description: string;
+  items: ValeurItem[];
+}
 
 export interface CtaAbout {
   titre: string;
   ctaPrimaire: string;
   ctaSecondaire: string;
 }
+
 // =========================
-// SolutionPage
+// PAGE SOLUTIONS
 // =========================
 
 export interface SolutionPageFeature {
   icon: string;
-
   title: string;
-
-  description?: string;
 }
 
-export interface SolutionPageCamera {
+/** Bloc commun à la caméra, la plateforme, le marché et le suivi technique */
+export interface SolutionPageBlock {
   tag: string;
-
+  /** Verbe d'étape affiché dans le parcours de l'en-tête (Voir, Comprendre, Décider, Vendre) */
+  verbe: string;
   title: string;
-
+  highlight?: string;
   description: string;
-
   features: SolutionPageFeature[];
+}
+
+export interface SolutionPageHeader {
+  titre: string;
+  highlight?: string;
+  description: string;
 }
 
 export interface SolutionPage {
-  camera: SolutionPageCamera;
-  plateforme: SolutionPagePlateforme;
-  market: SolutionPageMarket;
-  suiviTechnique: SolutionPageSuiviTechnique;
-}
-export interface SolutionPageMarket {
-  tag: string;
-
-  title: string;
-
-  description: string;
-
-  features: SolutionPageFeature[];
-}
-export interface SolutionPageSuiviTechnique {
-  tag: string;
-
-  title: string;
-
-  description: string;
-
-  features: SolutionPageFeature[];
+  header: SolutionPageHeader;
+  camera: SolutionPageBlock;
+  plateforme: SolutionPageBlock;
+  market: SolutionPageBlock;
+  suiviTechnique: SolutionPageBlock;
 }
 
-export interface SolutionPagePlateforme {
-  tag: string;
+// =========================
+// PAGE DÉMONSTRATIONS
+// =========================
 
-  title: string;
-
+export interface DemoVideo {
+  titre: string;
   description: string;
+  url: string;
+  poster?: string;
+  apercu?: number;
+}
 
-  features: SolutionPageFeature[];
+/** Une série de vidéos rattachée à une solution */
+export interface DemoGroup {
+  /** Sert d'ancre (#id) et de clé */
+  id: string;
+  verbe: string;
+  tag: string;
+  titre: string;
+  highlight?: string;
+  description: string;
+  videos: DemoVideo[];
+}
+
+/** Structure générale de la page Démonstrations */
+export interface DemonstrationPage {
+  header: {
+    tag: string;
+    titre: string;
+    highlight?: string;
+    description: string;
+  };
+
+  groupes: DemoGroup[];
 }
 
 // =========================
 // FAQ
 // =========================
 
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
 export interface FaqSection {
   tag: string;
   title: string;
   description: string;
+  aide: {
+    texte: string;
+    cta: string;
+  };
   items: FaqItem[];
 }
-export interface FaqItem {
-  question: string;
-  answer: string;
+
+// =========================
+// PAGE CONTACT
+// =========================
+
+export interface ContactField {
+  label: string;
+  placeholder: string;
+}
+
+export interface ContactSection {
+  header: {
+    tag: string;
+    titre: string;
+    highlight?: string;
+    description: string;
+  };
+  form: {
+    titre: string;
+    description: string;
+    champs: {
+      nom: ContactField;
+      telephone: ContactField;
+      sujet: { label: string; options: string[] };
+      message: ContactField;
+    };
+    erreurs: { nom: string; telephone: string };
+    messageIntro: string;
+    envoyer: string;
+    confirmation: string;
+  };
+  info: {
+    titre: string;
+    whatsapp: { titre: string; texte: string; cta: string };
+    labels: { telephone: string; email: string; localisation: string };
+  };
 }
 
 // =========================
@@ -264,33 +308,31 @@ export interface FooterLink {
   href: string;
 }
 
+export interface SocialLink {
+  label: string;
+  href: string;
+  icon: IconName;
+}
+
 export interface FooterSection {
   desc: string;
-  badge: string;
   liens: FooterLink[];
   socialLinks?: SocialLink[];
   copyright: string;
 }
 
 // =========================
-// FORMULAIRE
+// FORMULAIRE & API CONTACT
 // =========================
 
 export interface ContactFormData {
   nom: string;
   telephone: string;
-  situation: string;
-  localisation: string;
+  sujet: string;
+  message: string;
+  situation?: string;
+  localisation?: string;
 }
-// Réseaux sociaux
-export interface SocialLink {
-  label: string;
-  href: string;
-  icon: IconName;
-}
-// =========================
-// API CONTACT
-// =========================
 
 export interface ContactApiResponse {
   success: boolean;
@@ -306,25 +348,30 @@ export interface SiteConfig {
   slogan: string;
   email: string;
   telephone: string;
+  /** Lien WhatsApp unique, utilisé par la navbar, le hero et les CTA */
+  whatsapp: string;
   localisation: string;
 
+  // Accueil
   hero: HeroSection;
   statistiques: StatSection;
   ProblematiqueSection: ProblematiqueSection;
-  apropos: AproposSection;
   solution: SolutionSection;
   cible: CibleSection;
-  marche: MarcheSection;
+  CtaSection: CtaSection;
+
+  // À propos
+  apropos: AproposSection;
+  engagement: EngagementSection;
   mission: Mission;
   vision: Vision;
-  CtaSection: CtaSection;
+  valeurs: ValeursSection;
   ctaAbout: CtaAbout;
+
+  // Solutions
   solutionPage: SolutionPage;
   faq: FaqSection;
-
-  // valeurs: Valeur[];
-  piliers: Pilier[];
-  /** Liste des réseaux sociaux affichés dans le header/footer */
-
+  demonstration: DemonstrationPage;
+  contact: ContactSection;
   footer: FooterSection;
 }

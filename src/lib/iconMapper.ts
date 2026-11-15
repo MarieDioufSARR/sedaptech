@@ -26,6 +26,7 @@ import {
 import { GiSolarPower } from "react-icons/gi";
 import { Md360, MdOutlineNightlight } from "react-icons/md";
 
+// Correspondance entre les noms d'icônes et leurs composants.
 export const iconMap = {
   // Réseaux sociaux
   facebook: FaFacebook,
@@ -37,7 +38,7 @@ export const iconMap = {
   tiktok: FaTiktok,
   Tiktok: FaTiktok,
 
-  // Caméra (noms courts)
+  // Caméra
   vision360: Md360,
   solar: GiSolarPower,
   wifi: FaWifi,
@@ -45,13 +46,13 @@ export const iconMap = {
   nightVision: MdOutlineNightlight,
   microphone: FaMicrophone,
 
-  // Caméra (noms réels)
-  Md360: Md360,
-  GiSolarPower: GiSolarPower,
-  FaWifi: FaWifi,
-  FaBell: FaBell,
-  MdOutlineNightlight: MdOutlineNightlight,
-  FaMicrophone: FaMicrophone,
+  // Noms des composants d'icônes
+  Md360,
+  GiSolarPower,
+  FaWifi,
+  FaBell,
+  MdOutlineNightlight,
+  FaMicrophone,
 
   // Plateforme
   utensils: Utensils,
@@ -61,17 +62,21 @@ export const iconMap = {
   chartColumn: ChartColumn,
   layoutDashboard: LayoutDashboard,
   barChart3: BarChart3,
-  //Market
+
+  // Accès au marché
   users: Users,
   shield: ShieldCheck,
   handshake: Handshake,
-  // SuiviTechnique
+
+  // Suivi technique
   brain: Brain,
   headset: Headset,
 } as const;
 
+// Type représentant tous les noms d'icônes autorisés.
 export type IconName = keyof typeof iconMap;
 
+// Récupère le composant correspondant à un nom d'icône.
 export function getIcon(iconName: IconName) {
   return iconMap[iconName];
 }

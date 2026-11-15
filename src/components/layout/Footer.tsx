@@ -12,98 +12,85 @@ import { siteConfig } from "@/content/siteConfig";
 import { fadeUp, staggerContainer, staggerItem } from "@/lib/animation";
 import { getIcon, iconMap } from "@/lib/iconMapper";
 
+// Même style de titre de colonne partout : hiérarchie identique aux surtitres des sections
+const columnTitle =
+  "mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-slate-400";
+
 export default function Footer() {
+  const phoneHref = `tel:${String(siteConfig.telephone).replace(
+    /[^\d+]/g,
+    ""
+  )}`;
+
   return (
-    <footer className="relative overflow-hidden border-t border-white/10 bg-black">
-      {/* BACKGROUND */}
-
-      <div className="absolute inset-0 overflow-hidden">
-        {/* GRADIENTS */}
-
-        <div className="absolute left-0 top-0 h-80 w-80 rounded-full bg-red-500/10 blur-3xl" />
-
-        <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-green-500/10 blur-3xl" />
-
-        {/* GRID EFFECT */}
-
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-size-[60px_60px]" />
-
-        {/* OVERLAY */}
-
-        <div className="absolute inset-0 bg-black/70" />
-      </div>
-
-      <Container className="relative py-20">
+    <footer className="border-t border-white/10 bg-ink">
+      <Container className="py-16 lg:py-20">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid gap-16 lg:grid-cols-4"
+          className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.3fr] lg:gap-10"
         >
-          {/* BRAND */}
-
-          <motion.div variants={staggerItem}>
-            <div className="mb-6 flex items-center gap-4">
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white shadow-2xl">
+          {/* LOGO */}
+          <motion.div
+            variants={staggerItem}
+            className="sm:col-span-2 lg:col-span-1"
+          >
+            <Link
+              href="/"
+              aria-label="SEDAP'Tech, retour à l'accueil"
+              className="inline-flex items-center gap-4"
+            >
+              <span className="flex rounded-xl bg-white px-4 py-2.5">
                 <Image
                   src="/Images/logo.png"
-                  alt="SEDAPTech Logo"
-                  width={34}
-                  height={34}
-                  className="object-contain"
-                  style={{ width: "auto", height: "auto" }}
+                  alt="SEDAP — La Sénégalaise de Développement Agricole et de Prestations"
+                  width={200}
+                  height={58}
+                  className="h-10 w-auto"
                 />
-              </div>
+              </span>
+              <span
+                className="hidden h-8 w-px bg-white/15 min-[400px]:block"
+                aria-hidden="true"
+              />
+              <span className="hidden text-xs font-medium leading-tight text-slate-400 min-[400px]:block">
+                L&apos;aviculture
+                <br />
+                intelligente
+              </span>
+            </Link>
 
-              <div>
-                <h3 className="text-2xl font-bold tracking-tight text-white">
-                  SEDAPTech
-                </h3>
-
-                <p className="text-sm text-neutral-400">
-                  L’aviculture intelligente
-                </p>
-              </div>
-            </div>
-
-            <p className="max-w-md leading-relaxed text-neutral-300">
+            <p className="mt-5 max-w-sm leading-relaxed text-slate-300">
               {siteConfig.footer.desc}
             </p>
-
-            {/* BADGE */}
-            {/* 
-            <div className="mt-6 inline-flex items-center rounded-full border border-red-500/20 bg-red-500/10 px-4 py-2 text-sm font-medium text-red-400 backdrop-blur-sm">
-              {siteConfig.footer.badge}
-            </div> */}
           </motion.div>
 
           {/* NAVIGATION */}
-
-          <motion.div variants={staggerItem}>
-            <h4 className="mb-6 text-lg font-semibold text-white">
-              Navigation Rapide
-            </h4>
-
-            <div className="flex flex-col lg:ml-10 gap-4">
+          <motion.nav
+            variants={staggerItem}
+            aria-label="Navigation du pied de page"
+          >
+            <h2 className={columnTitle}>Navigation</h2>
+            <ul className="flex flex-col gap-3">
               {siteConfig.footer.liens.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className="group flex items-center gap-2  text-neutral-300 transition-all duration-300 hover:translate-x-1 hover:text-red-400 text-md "
-                >
-                  {link.label}
-                </Link>
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="inline-block py-1.5 text-slate-300 transition-colors duration-300 hover:text-brand-soft"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
               ))}
-            </div>
-          </motion.div>
+            </ul>
+          </motion.nav>
 
-          {/* SOCIALS */}
+          {/* RÉSEAUX */}
           <motion.div variants={staggerItem}>
-            <h4 className=" font-semibold text-lg text-white lg:text-center">
-              Nous suivre
-            </h4>
-            <div className="mt-8 flex lg:items-center lg:justify-center gap-4">
+            <h2 className={columnTitle}>Nous suivre</h2>
+            <div className="flex gap-3">
               {siteConfig.footer.socialLinks?.map((social) => {
                 const Icon = getIcon(
                   social.icon.toLowerCase() as keyof typeof iconMap
@@ -113,57 +100,60 @@ export default function Footer() {
                     key={social.label}
                     href={social.href}
                     target="_blank"
-                    className="group flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-neutral-300 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-red-500/30 hover:bg-red-500/10 hover:text-red-400"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    className="group flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-300 transition-colors duration-300 hover:border-brand-soft/40 hover:text-brand-soft"
                   >
-                    <Icon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
+                    <Icon className="h-5 w-5" aria-hidden="true" />
                   </Link>
                 );
               })}
             </div>
           </motion.div>
+
           {/* CONTACT */}
-
           <motion.div variants={staggerItem}>
-            <h4 className="mb-6 text-lg font-semibold text-white lg:ml-16">
-              Contact
-            </h4>
-
-            <div className="space-y-5">
-              <div className="flex items-center gap-4">
-                <div className="mt-1 rounded-2xl bg-red-500/10 p-3 text-red-400">
-                  <Mail className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="text-neutral-200">{siteConfig.email}</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <div className="mt-1 rounded-2xl bg-red-500/10 p-3 text-red-400">
-                  <PhoneCall className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="text-neutral-200">{siteConfig.telephone}</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <div className="mt-1 rounded-2xl bg-red-500/10 p-3 text-red-400">
-                  <MapPin className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="text-neutral-200">{siteConfig.localisation}</p>
-                </div>
-              </div>
-            </div>
+            <h2 className={columnTitle}>Contact</h2>
+            <ul className="space-y-4 text-slate-300">
+              <li className="flex items-start gap-3">
+                <Mail
+                  className="mt-0.5 h-5 w-5 shrink-0 text-slate-500"
+                  aria-hidden="true"
+                />
+                <a
+                  href={`mailto:${siteConfig.email}`}
+                  className="break-all transition-colors duration-300 hover:text-white"
+                >
+                  {siteConfig.email}
+                </a>
+              </li>
+              <li className="flex items-start gap-3">
+                <PhoneCall
+                  className="mt-0.5 h-5 w-5 shrink-0 text-slate-500"
+                  aria-hidden="true"
+                />
+                <a
+                  href={phoneHref}
+                  className="transition-colors duration-300 hover:text-white"
+                >
+                  {siteConfig.telephone}
+                </a>
+              </li>
+              <li className="flex items-start gap-3">
+                <MapPin
+                  className="mt-0.5 h-5 w-5 shrink-0 text-slate-500"
+                  aria-hidden="true"
+                />
+                <span>{siteConfig.localisation}</span>
+              </li>
+            </ul>
           </motion.div>
         </motion.div>
 
-        {/* BOTTOM */}
-
+        {/* PIED DE PAGE */}
         <motion.div
           {...fadeUp}
-          className="mt-16 flex flex-col items-center justify-between gap-5 border-t border-white/10 pt-8 text-sm text-neutral-500 md:flex-row"
+          className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-8 text-sm text-slate-500 md:flex-row md:items-center"
         >
           <p>{siteConfig.footer.copyright}</p>
         </motion.div>

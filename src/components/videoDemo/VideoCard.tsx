@@ -1,74 +1,100 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Play } from "lucide-react";
 
-interface VideoCardProps {
+type Props = {
+  numero: string;
+
   titre: string;
+
   description: string;
+
   url: string;
-  onOpen: (video: string) => void;
-}
+
+  poster?: string;
+
+  apercu?: number;
+
+  onOpen: () => void;
+};
 
 export default function VideoCard({
+  numero,
   titre,
   description,
   url,
+  poster,
+  apercu = 1,
   onOpen,
-}: VideoCardProps) {
+}: Props) {
+  // Détecte si l'utilisateur préfère limiter les animations.
+  const prefersReducedMotion = useReducedMotion();
+
+  // Désactive les déplacements et les effets de zoom si nécessaire.
+  const animationInitiale = prefersReducedMotion
+    ? { opacity: 1 }
+    : { opacity: 0, y: 28 };
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
+    <motion.article
+      initial={animationInitiale}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      whileHover={{ y: -10 }}
-      className="group relative overflow-hidden rounded-3xl border border-gray-100 bg-white p-6 shadow-[0_2px_20px_rgba(15,23,42,0.06)] transition-all duration-500 hover:shadow-[0_20px_60px_rgba(15,23,42,0.12)]"
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: prefersReducedMotion ? 0 : 0.5, ease: "easeOut" }}
+      className="group mx-auto w-full max-w-sm"
     >
-      {/* Halo discret au hover */}
-      <div className="pointer-events-none absolute inset-0 rounded-3xl bg-linear-to-br from-amber-100/0 via-transparent to-emerald-100/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-
-      {/* Aperçu vidéo — cliquable, ouvre la modale */}
+      {/* Carte verticale au format story */}
       <button
-        onClick={() => onOpen(url)}
-        aria-label={`Voir la vidéo : ${titre}`}
-        className="relative mx-auto block max-w-[320px] overflow-hidden rounded-2xl shadow-md ring-1 ring-black/5"
+        type="button"
+        onClick={onOpen}
+        aria-label={`Lire la vidéo : ${titre}`}
+        className="relative block aspect-[9/16] w-full overflow-hidden rounded-3xl bg-ink text-left shadow-[0_24px_50px_-28px_rgba(15,23,42,0.55)] ring-1 ring-ink/10 transition-transform duration-500 hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand motion-reduce:transition-none motion-reduce:hover:translate-y-0 cursor-pointer"
       >
-        <div className="aspect-9/16 relative bg-gray-900">
-          <video
-            className="h-full w-full object-cover"
-            muted
-            playsInline
-            preload="metadata"
-          >
-            <source src={`${url}#t=0.1`} type="video/mp4" />
-          </video>
+        {/* Aperçu vidéo : image fixe ou image extraite de la vidéo */}
+        <video
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100 "
+          muted
+          playsInline
+          preload="metadata"
+          poster={poster}
+          aria-hidden="true"
+          tabIndex={-1}
+        >
+          <source src={`${url}#t=${apercu}`} type="video/mp4" />
+        </video>
 
-          {/* Overlay play */}
-          <div className="absolute inset-0 flex items-center justify-center bg-black/20 transition-colors duration-300 group-hover:bg-black/30">
-            <motion.div
-              whileHover={{ scale: 1.08 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex h-16 w-16 items-center justify-center rounded-full bg-white/95 shadow-xl backdrop-blur-sm"
-            >
-              <Play className="h-7 w-7 translate-x-0.5 fill-emerald-600 text-emerald-600 cursor-pointer" />
-            </motion.div>
-          </div>
-        </div>
+        {/* Dégradé sombre pour garantir la lisibilité du titre */}
+        <span
+          aria-hidden="true"
+          className="absolute inset-0 bg-linear-to-t from-ink/90 via-ink/25 to-ink/10"
+        />
+
+        {/* Numéro de la vidéo */}
+        <span className="absolute left-4 top-4 rounded-full border border-white/20 bg-ink/40 px-3 py-1 text-xs font-semibold tracking-wider text-white backdrop-blur-sm">
+          {numero}
+        </span>
+
+        {/* Bouton de lecture décoratif */}
+        <span
+          aria-hidden="true"
+          className="absolute left-1/2 top-1/2 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-ink shadow-xl transition-transform duration-300 group-hover:scale-110 motion-reduce:transition-none motion-reduce:group-hover:scale-100 sm:h-16 sm:w-16"
+        >
+          <Play className="h-6 w-6 translate-x-0.5 fill-current sm:h-7 sm:w-7" />
+        </span>
+
+        {/* Titre de la démonstration */}
+        <span className="absolute inset-x-0 bottom-0 block p-5">
+          <span className="block text-base font-semibold leading-snug text-white sm:text-[1.0625rem]">
+            {titre}
+          </span>
+        </span>
       </button>
 
-      {/* Contenu */}
-      <div className="mt-7 text-center">
-        <h2 className="text-xl font-bold tracking-tight text-gray-900">
-          {titre}
-        </h2>
-
-        <div className="mx-auto mt-3 h-px w-10 bg-emerald-600/30" />
-
-        <p className="mt-4 text-[15px] leading-relaxed text-gray-500">
-          {description}
-        </p>
-      </div>
-    </motion.div>
+      {/* Description de la démonstration */}
+      <p className="mt-4 text-sm leading-relaxed text-slate-600">
+        {description}
+      </p>
+    </motion.article>
   );
 }

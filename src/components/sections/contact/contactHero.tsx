@@ -1,55 +1,81 @@
+import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { GoChevronRight } from "react-icons/go";
+
+import { siteConfig } from "@/content/siteConfig";
 
 export default function ContactHero() {
+  const { tag, titre, highlight, description } = siteConfig.contact.header;
+
+  const highlightIndex = highlight ? titre.indexOf(highlight) : -1;
+  const hasHighlight = highlightIndex !== -1;
+
+  const titreAvant = hasHighlight ? titre.slice(0, highlightIndex) : titre;
+
+  const titreApres = hasHighlight
+    ? titre.slice(highlightIndex + highlight!.length)
+    : "";
+
   return (
-    <section className="border-t border-gray-200">
-      {/* Hero */}
-      <div className="relative h-60 overflow-hidden">
-        {/* Image de fond */}
-        <Image
-          src="/Images/poul.jpg"
-          alt="Agriculture intelligente"
-          fill
-          priority
-          className="object-cover"
-        />
+    <section
+      aria-labelledby="contact-title"
+      className="relative isolate flex min-h-[420px] items-center overflow-hidden bg-ink py-28 sm:min-h-[460px] sm:py-32 lg:min-h-[500px] lg:py-36"
+    >
+      <Image
+        src="/Images/poul.jpg"
+        alt=""
+        fill
+        preload
+        quality={85}
+        sizes="100vw"
+        className="object-cover object-center"
+      />
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/85" />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-b from-ink/75 via-ink/80 to-ink/90"
+      />
 
-        {/* Breadcrumb */}
-        <div className="relative z-10 flex items-center gap-2 px-6 py-6">
-          <Link href="/" className="text-white/80 transition hover:text-white">
-            Accueil
-          </Link>
+      {/* Contenu principal */}
+      <div className="relative mx-auto w-full max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+        <nav aria-label="Fil d'Ariane">
+          <ol className="flex items-center justify-center gap-2 text-sm text-slate-300">
+            <li>
+              <Link
+                href="/"
+                className="transition-colors duration-200 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              >
+                Accueil
+              </Link>
+            </li>
 
-          <GoChevronRight className="h-4 w-4 text-white" />
+            <li aria-hidden="true">
+              <ChevronRight className="h-4 w-4" />
+            </li>
 
-          <Link
-            href="/contact"
-            className="text-white font-medium transition hover:text-emerald-200"
-          >
-            Contact
-          </Link>
-        </div>
-        <div className="relative mt-5 z-10 flex justify-center items-center">
-          <h1 className="text-white/80 text-sm italic">
-            Avec Sedaptech votre elevage est a porté de main
-          </h1>
-        </div>
-      </div>
+            <li aria-current="page" className="font-semibold text-white">
+              {tag}
+            </li>
+          </ol>
+        </nav>
 
-      {/* Contenu */}
-      <div className="mx-auto max-w-7xl px-6 py-12 text-center">
-        <h1 className="text-2xl font-bold tracking-tight text-gray-900 md:text-3xl">
-          Parlons de votre projet agricole
+        <h1
+          id="contact-title"
+          className="mx-auto mt-8 max-w-3xl text-balance text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl"
+        >
+          {hasHighlight ? (
+            <>
+              {titreAvant}
+              <span className="text-brand-soft">{highlight}</span>
+              {titreApres}
+            </>
+          ) : (
+            titre
+          )}
         </h1>
 
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-600">
-          Une question, un partenariat ou un projet à développer ? Notre équipe
-          est disponible pour vous accompagner.
+        <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-slate-300 sm:mt-6 sm:text-lg sm:leading-relaxed">
+          {description}
         </p>
       </div>
     </section>

@@ -1,108 +1,145 @@
 "use client";
 
-import { siteConfig } from "@/content/siteConfig";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, MessageCircleQuestion } from "lucide-react";
+import { ChevronDown, MessageCircle } from "lucide-react";
 import { useState } from "react";
+
+import Container from "@/components/shared/Container";
+import SectionHeader from "@/components/shared/SectionHeader";
+import { siteConfig } from "@/content/siteConfig";
+import { fadeUp } from "@/lib/animation";
+
 export function FaqSection() {
+  const { tag, title, description, items, aide } = siteConfig.faq;
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="relative overflow-hidden py-24 lg:py-32 bg-black/80">
-      {/* Background */}
+    <section
+      aria-labelledby="faq-title"
+      className="bg-[#F5F8F4] py-16 sm:py-20 lg:py-24"
+    >
+      <Container>
+        <div className="grid items-start gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+          {/* Colonne gauche : présentation et contact */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            className="lg:sticky lg:top-28"
+          >
+            <SectionHeader
+              id="faq-title"
+              eyebrow={tag}
+              title={title}
+              description={description}
+              accent="leaf"
+              align="left"
+            />
 
-      <div className="container mx-auto px-4">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mx-auto max-w-3xl text-center"
-        >
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black px-4 py-2 text-sm font-medium text-white">
-            <MessageCircleQuestion className="h-4 w-4" />
-            {siteConfig.faq.tag}
-          </div>
+            <div className="mt-8 rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm sm:p-6">
+              <div className="flex items-start gap-4">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-leaf/10 text-leaf">
+                  <MessageCircle className="h-5 w-5" aria-hidden="true" />
+                </span>
 
-          <h2 className="text-2xl font-bold tracking-tight text-white md:text-3xl">
-            {siteConfig.faq.title}
-          </h2>
+                <div>
+                  <p className="text-sm font-semibold text-ink">{aide.texte}</p>
 
-          <p className="mt-6 text-lg leading-relaxed text-neutral-400">
-            {siteConfig.faq.description}
-          </p>
-        </motion.div>
-
-        {/* FAQ LIST */}
-        <div className="mx-auto mt-16 max-w-4xl space-y-4">
-          {siteConfig.faq.items.map((item, index) => {
-            const isOpen = openIndex === index;
-
-            return (
-              <motion.div
-                key={item.question}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.4,
-                  delay: index * 0.05,
-                }}
-                className="overflow-hidden rounded-3xl border border-white/10 bg-black/3 backdrop-blur-xl"
-              >
-                <button
-                  onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="flex w-full items-center justify-between px-6 py-5 text-left transition-colors hover:bg-white/2 cursor-pointer"
-                >
-                  <span className="pr-6 text-lg font-semibold text-white">
-                    {item.question}
-                  </span>
-
-                  <motion.div
-                    animate={{
-                      rotate: isOpen ? 180 : 0,
-                    }}
-                    transition={{
-                      duration: 0.25,
-                    }}
+                  <a
+                    href={siteConfig.whatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 inline-flex items-center gap-2 text-sm font-semibold text-brand-dark transition-colors hover:text-brand"
                   >
-                    <ChevronDown className="h-5 w-5 text-emerald-400" />
-                  </motion.div>
-                </button>
+                    {aide.cta}
+                    <span aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </motion.div>
 
-                <AnimatePresence>
-                  {isOpen && (
-                    <motion.div
-                      initial={{
-                        height: 0,
-                        opacity: 0,
-                      }}
-                      animate={{
-                        height: "auto",
-                        opacity: 1,
-                      }}
-                      exit={{
-                        height: 0,
-                        opacity: 0,
-                      }}
-                      transition={{
-                        duration: 0.3,
-                      }}
+          {/* Colonne droite : questions fréquentes */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="flex flex-col gap-3"
+          >
+            {items.map((item, index) => {
+              const isOpen = openIndex === index;
+
+              return (
+                <div
+                  key={item.question}
+                  className={`overflow-hidden rounded-2xl border bg-white transition-all duration-300 ${
+                    isOpen
+                      ? "border-leaf/30 shadow-md shadow-leaf/5"
+                      : "border-slate-200 shadow-sm hover:border-leaf/30"
+                  }`}
+                >
+                  {/* Intitulé de la question */}
+                  <h3>
+                    <button
+                      type="button"
+                      id={`faq-question-${index}`}
+                      aria-expanded={isOpen}
+                      aria-controls={`faq-answer-${index}`}
+                      onClick={() => setOpenIndex(isOpen ? null : index)}
+                      className={`flex w-full cursor-pointer items-center justify-between gap-5 px-5 py-5 text-left transition-colors sm:px-6 ${
+                        isOpen ? "bg-leaf/[0.04]" : "hover:bg-slate-50/80"
+                      }`}
                     >
-                      <div className="border-t border-white/5 px-6 pb-6 pt-4">
-                        <p className="leading-relaxed text-neutral-400">
+                      <span className="text-base font-semibold leading-snug text-ink sm:text-[1.05rem]">
+                        {item.question}
+                      </span>
+
+                      <span
+                        className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors duration-300 ${
+                          isOpen
+                            ? "bg-leaf/10 text-leaf"
+                            : "bg-slate-100 text-slate-500"
+                        }`}
+                      >
+                        <ChevronDown
+                          aria-hidden="true"
+                          className={`h-4 w-4 transition-transform duration-300 ${
+                            isOpen ? "rotate-180" : ""
+                          }`}
+                        />
+                      </span>
+                    </button>
+                  </h3>
+
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        id={`faq-answer-${index}`}
+                        role="region"
+                        aria-labelledby={`faq-question-${index}`}
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{
+                          duration: 0.3,
+                          ease: "easeInOut",
+                        }}
+                        className="overflow-hidden"
+                      >
+                        <p className="px-5 pb-5 text-sm leading-7 text-slate-600 sm:px-6 sm:pb-6 sm:text-base">
                           {item.answer}
                         </p>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            );
-          })}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </motion.div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

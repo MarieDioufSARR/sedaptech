@@ -1,9 +1,11 @@
-import DemoCamera from "@/components/sections/demonstrationSection/DemoCamera";
+import Cta from "@/components/sections/home/Cta";
+import DemoGallery from "@/components/videoDemo/DemoGallery";
 
-export default function DemonstrationCamera() {
+export default function DemonstrationPage() {
   return (
     <>
-      <DemoCamera />;
+      <DemoGallery />
+      <Cta tone="gray" />
     </>
   );
 }
