@@ -11,7 +11,6 @@ export default function ContactPage() {
       <section className="bg-slate-50 py-16 sm:py-20 lg:py-24">
         <Container>
           <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12">
-            {/* Mobile : WhatsApp d'abord ; desktop : formulaire à gauche */}
             <div className="order-2 lg:order-1">
               <ContactForm />
             </div>
